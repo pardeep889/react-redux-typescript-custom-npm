@@ -150,30 +150,3 @@ storiesOf('General', module)
   .add('Icon', () => <IconPage />);
   .add('Calendar', () => <CalendarPage />);
 ```
-
-### Color Theme Override 
-
-`src/assets/style/index.less` must be imported in `.storybook/config.js`
-
----
----
-
-### Issue #1: 
-```
-Cannot read property 'createElement' of undefined
-TypeError: Cannot read property 'createElement' of undefined
-```
-Solution: 
-
-switch `esModuleInterop` to `true`
-```
-~tsconfig.json
-
-{
-  "compilerOptions": {
-    "esModuleInterop": true
-  }
-}
-```
-
-source: https://github.com/storybookjs/storybook/issues/416

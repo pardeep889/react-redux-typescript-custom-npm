@@ -35,8 +35,8 @@ module.exports = ({ config }) => {
 
   config.resolve.extensions.push('.ts', '.tsx');
 
-  config.resolve.alias['@style'] = path.resolve(__dirname, '../src/assets/style')
-  config.resolve.alias['@components'] = path.resolve(__dirname, '../src/components')
+  config.resolve.alias['@style'] = path.resolve(__dirname, '../src/assets/style/')
+  config.resolve.alias['@components'] = path.resolve(__dirname, '../src/components/')
 
   return config;
 };
