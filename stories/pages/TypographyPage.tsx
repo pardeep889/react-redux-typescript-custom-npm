@@ -4,15 +4,14 @@ import React from 'react';
 // import { action } from '@storybook/addon-actions';
 
 //COMPONENT
-import { Title } from '../../src/components/index';
-import { Text } from '../../src/components/index';
+import { Title, Text } from '@components/index';
 
 const TypographyPage = () => {
   return (
     <div>
-      <h3 className="storytitle">Typography Types</h3>
+      <h3 className="story-title">Typography Types</h3>
       <section>
-        <h4 className="storytitle">Titles</h4>
+        <h4 className="story-title">Titles</h4>
         <div className="m20">
           <Title level="h1"> H1 Sample Text </Title>
         </div>
@@ -28,7 +27,7 @@ const TypographyPage = () => {
         </div>
       </section>
       <section>
-        <h4 className="storytitle">Main Text</h4>
+        <h4 className="story-title">Main Text</h4>
         <div className="m20">
           <Text> Main Sample Text </Text>
         </div>
