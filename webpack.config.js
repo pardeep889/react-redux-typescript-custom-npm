@@ -46,8 +46,8 @@ module.exports = {
 	resolve: {
 		extensions: ['.js', '.jsx', '.ts', '.tsx', '.less', '.json', '.png', '.gif', '.jpg', '.svg'],
 		alias: {
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@style': path.resolve(__dirname, 'src/assets/style'),
+      '@components': path.resolve(__dirname, 'src/components/'),
+      '@style': path.resolve(__dirname, 'src/assets/style/'),
     }
 	},
 };
