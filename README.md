@@ -39,8 +39,8 @@ Each component will have it's own documentation.  -->
 
 To get started, run the following commands: 
   ```
-    $ git clone https://github.com/fig8-tech/fig8-web-library.git
-    $ npm install
+    git clone https://github.com/fig8-tech/fig8-web-library.git
+    npm install
   ```
 
 Fig8 Library uses Storybook for Component organization and viewing.
@@ -103,7 +103,7 @@ Ant Design is written with `JS Typescript`, for more information on Ant Design, 
 To open storybook, run: 
 
 ```
-$ npm run storybook
+npm run storybook
 ```
 
 Navigate to  http://localhost:8080 to view the stories. Stories should auto-magically update as you develop.
