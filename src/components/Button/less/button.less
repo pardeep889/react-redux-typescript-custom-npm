@@ -1,0 +1,118 @@
+@import '../../../assets/style/color.less';
+
+// Common Variables
+@btn-primary-shadow: 0px 4px;
+@btn-secondary-border: 2px solid;
+
+.btn {
+
+  // Typical styling
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 16px;
+  letter-spacing: 1.5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+
+  border: none;
+  
+  &.primary {
+    // BACKGROUND
+    width: 320px;
+    height: 52px;
+    
+    border-radius: 27px;
+    background: @cherry;
+    
+    box-shadow: @btn-primary-shadow @pomegranate;
+    
+    &:hover:enabled {
+      background: @pomegranate;
+      box-shadow: @btn-primary-shadow @pomegranate-shadow;
+    }
+    
+    &:active:enabled {
+      background: @pomegranate-shadow;
+      box-shadow: @btn-primary-shadow @pomegranate-shadow;
+    }
+    
+    &:disabled {
+      background: @malt;
+      box-shadow: @btn-primary-shadow @malt-shadow;
+    }
+  
+    // TEXT
+    color: @white;
+  }
+
+  &.secondary {
+
+    // Typical styling
+    padding-left: 32px;
+    padding-right: 32px;
+
+    border: @btn-secondary-border @cherry;
+    border-radius: 34px;
+
+    color: @cherry;
+
+    &.full {
+      height: 48px;
+    }
+
+    &.small {
+      height: 32px;
+    }
+
+    &:hover:enabled {
+      color: @white;
+      background-color: @cherry;
+    }
+
+    &:active:enabled {
+      //! background & color currently blue for testing, change color when Qstudio updates
+      color: blue;
+      border: @btn-secondary-border blue;
+      background-color: @white;
+    }
+    
+    &:disabled {
+      color: @malt;
+      border: @btn-secondary-border @malt;
+      // background-color: @btn-secondary-bg-disabled;
+    }
+  }
+
+  &.text {
+    // Typical styling
+    border: none;
+    text-align: right;
+
+    color: @cherry;
+    font-weight: bold;
+
+    span {
+      padding-bottom: 2px;
+      border-bottom-width: 2px;
+      border-bottom-style: solid;
+    }
+
+    &:hover:enabled {
+      color: @pomegranate;
+    }
+
+    &:active:enabled {
+      //! color currently blue for testing, change color when Qstudio updates
+      color: blue;
+    }
+
+    &:disabled {
+      color: @malt;
+    }
+
+  }
+}
