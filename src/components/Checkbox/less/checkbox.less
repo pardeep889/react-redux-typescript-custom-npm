@@ -1,5 +1,26 @@
 @import '../../../assets/style/color.less';
 
-.checkbox-text {
-  display: inline;
+.checkbox {
+
+  &[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+  }
+
+  span {
+    align-items: center;
+  
+    font-size: 14px;
+    font-weight: 500;
+    
+    color: @pomegranate;
+  }
+
+}
+
+.ant-checkbox-input{
+  &[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+  }
 }
