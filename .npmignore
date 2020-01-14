@@ -1,0 +1,5 @@
+#Stories
+.storybook/
+stories/
+build/
+
