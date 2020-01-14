@@ -2,14 +2,13 @@
 
 
 ## Install
+
 ```
 npm install fig8-library
 ```
-```
-yarn add fig8-library
-```
+
 ## Usage
----
+
 ```
 import { Button } from 'fig8-web-library';
 
