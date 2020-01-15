@@ -1,4 +1,5 @@
 const path = require('path');
+const lessPluginGlob = require('less-plugin-glob');
 
 module.exports = {
 	entry: './src/index.ts',
@@ -29,6 +30,8 @@ module.exports = {
 					{
 						loader: 'less-loader',
 						options: {
+							plugins: [lessPluginGlob],
+							paths: [path.resolve(__dirname, "src"),path.resolve(__dirname, "node_modules")],
 							javascriptEnabled: true,
 						}
 					}
