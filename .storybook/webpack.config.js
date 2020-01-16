@@ -1,4 +1,5 @@
 const path = require('path');
+const lessPluginGlob = require('less-plugin-glob');
 
 module.exports = ({ config }) => {
   // load custom variables for theme
@@ -8,9 +9,11 @@ module.exports = ({ config }) => {
       { loader: 'style-loader' },
       { loader: 'css-loader' },
       { loader: 'less-loader',
-        options: {
-          javascriptEnabled: true
-        }
+      options: {
+        plugins: [lessPluginGlob],
+        paths: [path.resolve(__dirname, "src"),path.resolve(__dirname, "node_modules")],
+        javascriptEnabled: true,
+      }
       },
     ],
   }, 

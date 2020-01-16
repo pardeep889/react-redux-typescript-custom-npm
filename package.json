@@ -13,7 +13,7 @@
     "url": "git+https://github.com/fig8-tech/fig8-components.git"
   },
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/"
   },
   "author": "fig8",
   "license": "ISC",
@@ -38,6 +38,7 @@
     "css-loader": "^3.4.2",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
+    "less-plugin-glob": "^3.0.0",
     "react-docgen-typescript-loader": "^3.6.0",
     "style-loader": "^1.1.2",
     "ts-loader": "^6.2.1",
