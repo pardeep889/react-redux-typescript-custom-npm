@@ -1,26 +1,54 @@
 @import '../../../assets/style/color.less';
 
-.checkbox {
+// ANT OVERRIDE VARIABLES
+@checkbox-size : 24px;
+@checkbox-color : @strawberry;
+@checkbox-check-color : @white;
+@checkbox-border-width : 1px;
 
-  &[type="checkbox"] {
-    width: 24px;
-    height: 24px;
+// FIG8 VARIABLES
+
+.ant-checkbox {
+  &:hover {
+    .ant-checkbox-inner {
+      box-shadow: 0px 0px 10px @strawberry-shadow;
+      border: 1px solid @strawberry;
+    }
+  }
+}
+ 
+.checkbox {
+  display: flex;
+
+  .ant-checkbox-inner {
+    border: 1px solid @malt-light;
+  }
+
+  ::after {
+    border: none;
+  }
+
+  .text {
+    display: block; 
+    padding-left: 16px;
+  }
+
+  &.disabled {
+    .ant-checkbox-inner {
+      box-shadow: none;
+      background-color: #F8F7F6;
+      border-color: @malt-light !important;
+    }
+
+    .text {
+      color: @malt;
+    }
   }
 
   span {
-    align-items: center;
-  
-    font-size: 14px;
-    font-weight: 500;
-    
-    color: @pomegranate;
-  }
-
-}
-
-.ant-checkbox-input{
-  &[type="checkbox"] {
-    width: 24px;
-    height: 24px;
+    padding: 0px;
   }
 }
+
+//! Styling still needed!! 
+//! on text hover, border on checkbox should not change color.
