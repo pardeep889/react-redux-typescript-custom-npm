@@ -55,8 +55,8 @@ function CalendarWrapper(props: CalendarProps) {
 };
 
 const dateCellRender = (date: Moment) => {
-  const day = date.date()
-  return <DateCell>{day}</DateCell>
+  const day = date.date();
+  return <DateCell day={day}/>
 };
 
 const matchedDate = (current: Moment, date: string) => {

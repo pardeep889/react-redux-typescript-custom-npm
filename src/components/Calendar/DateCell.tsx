@@ -3,11 +3,23 @@ import React from 'react';
 import './less/date.less';
 import { Text } from '@components/index';
 
-function DateCell(props:any) {
-  
+interface DateCellProps {
+  children?: React.ReactNode;
+  day?: number;
+  disabled?: boolean;
+}
+
+function DateCell(props: DateCellProps) {
+  const { day, disabled } = props;
+  let dateDisabled = "";
+
+  disabled ? dateDisabled = "disabled" : "";
+
+  const dateCellClass = `date ${dateDisabled}`
+
   return (
-    <div className="date">
-      <Text>{props.children}</Text>
+    <div className={dateCellClass}>
+      <Text>{day}</Text>
     </div>
   )
 }

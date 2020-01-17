@@ -15,7 +15,10 @@ const CalendarPage = () => {
       <section className="m20">
         <h4 className="mb20">Date Cell</h4>
         <div className="m20">
-          <DateCell>6</DateCell>
+          <DateCell day={6}/>
+        </div>
+        <div className="m20">
+          <DateCell disabled day={6}/>
         </div>
       </section>
       <section className="m20">
