@@ -5,6 +5,7 @@ import './less/calendar.less';
 
 import moment, { Moment } from 'moment';
 import DateCell from './DateCell';
+import { Text } from '@components/index';
 
 interface CalendarProps extends AntCalendarProps {
   //* disabled dates
@@ -123,15 +124,47 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
     return
   };
 
+  // headerRender = (value: Moment, type: string, onChange: () => void, onTypeChange: () => void) => {
+  //   debugger
+  //   return (
+  //     <div></div>
+  //   )
+  // }
+
   render(){
     return (
       <div className="calendar">
+        <header className="calendar-header">
+          <div className="calendar-header-title">
+            <Text>January</Text>
+          </div>
+          <div className="calendar-header-weekday">
+            <Text className="weekday-text">S</Text>
+            <Text className="weekday-text">M</Text>
+            <Text className="weekday-text">T</Text>
+            <Text className="weekday-text">W</Text>
+            <Text className="weekday-text">Th</Text>
+            <Text className="weekday-text">F</Text>
+            <Text className="weekday-text">Sa</Text>
+          </div>
+        </header>
         <Calendar 
           fullscreen={false} 
           disabledDate={this.disabledDate}
           dateFullCellRender={this.dateFullCellRender}
           onPanelChange={this.onPanelChange}
+          // headerRender={() => this.headerRender}
         />
+        <section className="calendar-legend">
+          <div>
+            <div />
+            <Text>PINKMAS</Text>
+          </div>
+          <div>
+            <div />
+            <Text>MOIC general</Text>
+          </div>
+        </section>
       </div>
     )
   }

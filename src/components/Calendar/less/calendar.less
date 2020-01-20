@@ -1,8 +1,70 @@
 @import '../../../assets/style/color.less';
 
 .calendar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
   width: 396px;
   height: 436px;
+  padding: 32px 22px;
+  border-radius: 12px;
 
   background-color: @strawberry-light;
+
+  .calendar-header {
+    width: 100%;
+
+    .calendar-header-title {
+      display: flex;
+      justify-content: center;
+    }
+  
+    .calendar-header-weekday {
+      display: flex;
+      justify-content: space-evenly;
+  
+      padding: 16px 0px;
+    }
+
+    .weekday-text {
+      width: 48px;
+      padding: 0px;
+      justify-content: center;
+    }
+  }
+
+
+  .calendar-legend {
+    display: flex;
+    padding-top: 24px;
+  }
+}
+
+
+.ant-fullcalendar-header,
+.ant-fullcalendar-column-header,
+.ant-fullcalendar-column-header-inner {
+  display: none;
+}
+
+.ant-fullcalendar-calendar-body {
+  padding: 0px;
+}
+
+.ant-fullcalendar-cell td {
+  width: 48px;
+  height: 48px;
+}
+
+.ant-fullcalendar {
+  
+  border: none;
+
+  table {
+    table-layout: fixed;
+    width: 348px;
+    height: 248px;
+  }
 }
