@@ -7,6 +7,7 @@ interface DateCellProps {
   children?: React.ReactNode;
   day?: number;
   disabled?: boolean;
+  display?: boolean;
 }
 
 function DateCell(props: DateCellProps) {
