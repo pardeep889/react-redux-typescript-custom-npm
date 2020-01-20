@@ -101,12 +101,12 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
     if(reset || beforeCurrentDay) return <DateCell disabled day={day} />
 
     //* EVENT DATES
-    if(eventDates && eventDates[date.format("LL")]) return <DateCell event day={day} />
+    if(eventDates && eventDates[date.format("LL")]) event = true;
 
     //* DISCOUNT DATES
-    if(discountDates && discountDates[date.format("LL")]) return <DateCell discount day={day} />
+    if(discountDates && discountDates[date.format("LL")]) discount = true;
 
-    return <DateCell day={day} />
+    return <DateCell day={day} event={event} discount={discount} />
   }
 
   onPanelChange = (date: Moment, mode: "month" | "year" | undefined ) => {
