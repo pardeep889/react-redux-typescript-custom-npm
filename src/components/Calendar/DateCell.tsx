@@ -1,26 +1,41 @@
 import React from 'react';
 
 import './less/date.less';
-import { Text } from '@components/index';
 
 interface DateCellProps {
   children?: React.ReactNode;
   day?: number;
   disabled?: boolean;
-  display?: boolean;
+  displayOff?: boolean;
+  show?: boolean;
+  selected?: boolean;
+  discount?: boolean;
 }
 
 function DateCell(props: DateCellProps) {
-  const { day, disabled } = props;
+  const { day, disabled, displayOff, show, selected, discount } = props;
   let dateDisabled = "";
+  let dateShow = "";
+  let dateSelected = "";
+  let dateDiscount = null;
+
+  if(displayOff){
+    return (
+      <div className="date-display-off"/>
+    )
+  }
 
   disabled ? dateDisabled = "disabled" : "";
+  show ? dateShow = "show" : "";
+  selected ? dateSelected = "selected" : "";
+  discount ? dateDiscount = <p className="date-discount" >%</p> : null
 
-  const dateCellClass = `date ${dateDisabled}`
+  const dateCellClass = `date ${dateDisabled} ${dateShow} ${dateSelected}`
 
   return (
     <div className={dateCellClass}>
-      <Text>{day}</Text>
+      <p>{day}</p>
+      {dateDiscount}
     </div>
   )
 }

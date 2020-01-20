@@ -67,7 +67,7 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
     const { disabledDates, month } = this.state;
 
     if(date.month() !== month){
-      return <DateCell display={false} />
+      return <DateCell displayOff={true}/>
     }
 
     const day = date.date();
@@ -97,7 +97,7 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
         <Calendar 
           fullscreen={false} 
           disabledDate={this.disabledDate}
-          dateCellRender={this.dateCellRender}
+          dateFullCellRender={this.dateCellRender}
           onPanelChange={this.onPanelChange}
         />
       </div>
