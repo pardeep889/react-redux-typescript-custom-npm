@@ -25,8 +25,8 @@ const CalendarPage = () => {
             <DateCell disabled day={6}/>
           </div>
           <div className="m20">
-            <h6 className="mb20">Show</h6>
-            <DateCell show day={6}/>
+            <h6 className="mb20">Event</h6>
+            <DateCell event day={6}/>
           </div>
           <div className="m20">
             <h6 className="mb20">Selected</h6>
@@ -44,6 +44,8 @@ const CalendarPage = () => {
           <Calendar 
             resetDay={2} 
             soldOutDates={["2020-02-02", "2020-02-07"]} 
+            eventDates={["2020-01-23", "2020-01-24"]}
+            discountDates={["2020-01-27", "2020-01-29"]}
           />
         </div>
       </section>

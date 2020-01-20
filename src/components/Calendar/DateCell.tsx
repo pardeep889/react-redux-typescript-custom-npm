@@ -7,15 +7,15 @@ interface DateCellProps {
   day?: number;
   disabled?: boolean;
   displayOff?: boolean;
-  show?: boolean;
+  event?: boolean;
   selected?: boolean;
   discount?: boolean;
 }
 
 function DateCell(props: DateCellProps) {
-  const { day, disabled, displayOff, show, selected, discount } = props;
+  const { day, disabled, displayOff, event, selected, discount } = props;
   let dateDisabled = "";
-  let dateShow = "";
+  let dateEvent = "";
   let dateSelected = "";
   let dateDiscount = null;
 
@@ -26,11 +26,11 @@ function DateCell(props: DateCellProps) {
   }
 
   disabled ? dateDisabled = "disabled" : "";
-  show ? dateShow = "show" : "";
+  event ? dateEvent = "event" : "";
   selected ? dateSelected = "selected" : "";
   discount ? dateDiscount = <p className="date-discount" >%</p> : null
 
-  const dateCellClass = `date ${dateDisabled} ${dateShow} ${dateSelected}`
+  const dateCellClass = `date ${dateDisabled} ${dateEvent} ${dateSelected}`
 
   return (
     <div className={dateCellClass}>
