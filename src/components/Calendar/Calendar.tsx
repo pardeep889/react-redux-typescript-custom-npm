@@ -1,11 +1,17 @@
-import React, {MouseEvent} from 'react';
+// import from libraries
+import React from 'react';
 import Calendar, {CalendarProps as AntCalendarProps } from 'antd/es/calendar';
+import moment, { Moment } from 'moment';
 
+// styling
 import './less/calendar.less';
 
-import moment, { Moment } from 'moment';
+// import from fig8-components
 import DateCell from './DateCell';
-import { Text, Button } from '@components/index';
+import { Text } from '@components/index';
+
+// import from svg
+import Arrow from '@icon/Arrow';
 
 interface CalendarProps extends AntCalendarProps {
   //* disabled dates
@@ -13,44 +19,63 @@ interface CalendarProps extends AntCalendarProps {
   closedDates?: string[];
   resetDay: 0 | 1 | 2 | 3 | 4 | 5 | 6 ;
 
-  //* events/discount
+  //* open dates
+  openedDates? : string[];
+
+  //* discount
   discountDates?: string[];
-  eventDates?: string[];
+
+  //* events
+  eventOneDates?: string[];
+  eventOneLabel?: string;
+
+  eventTwoDates?: string[];
+  eventTwoLabel?: string;
 }
 
 interface CalendarState {
-  disabledDates: {[key: string]: string };
+  disabledDates: {[key: string]: boolean};
   discountDates: {[key: string]: boolean};
-  eventDates: {[key: string]: boolean};
+  eventOneDates: {[key: string]: boolean};
+  eventTwoDates: {[key: string]: boolean};
+  openedDates: {[key: string]: boolean};
   month: string;
-}
+}          
 
 class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
   constructor(props: CalendarProps){
     super(props)
 
     this.state = {
+      // disabled dates to be key value pairs {"January 01, 2020": "closed"}
       disabledDates: this.setDatesToState("disable"),
+
+      // other dates to be key value pairs {"January 01, 2020": true}
+
       discountDates: this.setDatesToState("discount", this.props.discountDates),
-      eventDates: this.setDatesToState("event", this.props.eventDates),
+      eventOneDates: this.setDatesToState("event", this.props.eventOneDates),
+      eventTwoDates: this.setDatesToState("event", this.props.eventTwoDates),
+      openedDates: this.setDatesToState("open", this.props.openedDates),
+
+      // current month & year on calendar
       month: moment().format("MMMM YYYY"),
     }
   }
 
-  setDatesToState = (type: "disable" | "event" | "discount", dates?: string[]) => {
+  setDatesToState = (type: "disable" | "event" | "discount" | "open" , dates?: string[]) => {
     if(type === "disable"){
       const { closedDates, soldOutDates } = this.props;
       const allDates: string[] = [];
       let disabledDates = {};
-  
+      
       closedDates ? allDates.push(...closedDates) : null ;
       soldOutDates ? allDates.push(...soldOutDates) : null ;
-  
+      
       allDates.forEach(date => {
         const formattedDate = moment(date).format("LL");
         disabledDates[formattedDate] = "closed";
       });
-  
+
       return disabledDates;
     }
 
@@ -66,48 +91,59 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
 
   disabledDate = (current: Moment) => {
     const { resetDay } = this.props;
-    const { disabledDates, month } = this.state;
+    const { disabledDates, openedDates, month } = this.state;
 
+    const formattedDate = current.format("LL");
     const reset = current.day() === resetDay;
     const beforeCurrentDay = current < moment().startOf('day');
-    const formatedDate = current.format("LL");
+    const notCurrentMonth = month !== current.format("MMMM YYYY");
+    const disabled = disabledDates && disabledDates[formattedDate];
 
-    if(month !== current.format("MMMM YYYY")) return true;
-    if(disabledDates && disabledDates[formatedDate]){
-      if (disabledDates[formatedDate] === "closed") return true;
-      else return false;
-    }
-    if(reset || beforeCurrentDay) return true;
+    if(beforeCurrentDay || notCurrentMonth || disabled) return true;
+    if(openedDates && openedDates[formattedDate]) return false;
+
+    //reset is last if conditions above passes
+    if(reset) return true;
 
     return false;
   };
 
   dateFullCellRender = (date: Moment) => {
     const { resetDay } = this.props;
-    const { disabledDates, eventDates, discountDates, month } = this.state;
+    const { disabledDates, eventOneDates, discountDates, openedDates, month } = this.state;
 
-    let disable, event, discount = false;
-
+    let event, discount = false;
+    
     // turn off all dates not in current month shown
-    if(date.format("MMMM YYYY") !== month){
-      return <DateCell displayOff />
-    }
+    const notCurrentMonth = month !== date.format("MMMM YYYY");
+    if(notCurrentMonth) return <DateCell displayOff />
+
+    // disabled / event / discount / opened
+    const day = date.date();
+
+    const reset = date.day() === resetDay;
+
+    const beforeCurrentDay = date < moment().startOf('day');
+    const formattedDate = date.format("LL");
+    const disabled = disabledDates && disabledDates[formattedDate];
+    const opened = openedDates && openedDates[formattedDate];
 
     //* DISABLED DATES
-    const day = date.date();
-    const reset = date.day() === resetDay;
-    const beforeCurrentDay = date < moment().startOf('day');
+    if(beforeCurrentDay || disabled) return <DateCell disabled day={day} />;
 
-    if(disabledDates && disabledDates[date.format("LL")]) return <DateCell disabled day={day} />
-    if(reset || beforeCurrentDay) return <DateCell disabled day={day} />
-
-    //* EVENT DATES
-    if(eventDates && eventDates[date.format("LL")]) event = true;
-
-    //* DISCOUNT DATES
+    //* EVENT/DISCOUNT DATES
+    if(eventOneDates && eventOneDates[date.format("LL")]) event = true;
     if(discountDates && discountDates[date.format("LL")]) discount = true;
 
-    return <DateCell day={day} event={event} discount={discount} />
+    //* OPENED DATES
+    if(opened) return <DateCell day={day} event={event} discount={discount} />;
+    
+    //* RESET DATES
+    if(reset || beforeCurrentDay) return <DateCell disabled day={day} />;
+
+
+    //* default return
+    return <DateCell day={day} event={event} discount={discount} />;
   }
 
   onPanelChange = (date: Moment, mode: "month" | "year" | undefined ) => {
@@ -125,28 +161,29 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
   };
 
   headerRender = (value: Moment, onChange: ((value: Moment) => void) | undefined ) => {
-    //! replace button to arrows
     if(onChange){
       return (
         <header className="calendar-header">
           <div className="calendar-header-title">
-            <Button 
+            <div 
               onClick={ () => {
                 const newValue = value.clone();
                 newValue.subtract(1, 'M');
                 onChange(newValue);
               }}
-              type="text"
-            >prev</Button>
+            >
+              <Arrow type="left"/>
+            </div>
           <Text>{this.state.month}</Text>
-            <Button 
+            <div 
               onClick={ () => {
                   const newValue = value.clone();
                   newValue.add(1, 'M');
                   onChange(newValue)
               }}
-              type="text"
-            >next</Button>
+            >
+              <Arrow type="right"/>
+            </div>
           </div>
           <div className="calendar-header-weekday">
             <Text className="weekday-text">S</Text>
@@ -165,6 +202,27 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
   }
 
   render(){
+    const { eventOneDates, eventTwoDates } = this.state;
+    const { eventOneLabel, eventTwoLabel } = this.props;
+    let eventOne, eventTwo = null;
+    
+    if(eventOneDates){
+      eventOne = (
+        <div>
+          <div className="legend-icon eventOne" />
+          <Text>{eventOneLabel}</Text>
+        </div>
+      )
+    }
+
+    if(eventTwoDates){
+      eventTwo = (
+        <div>
+          <div className="legend-icon eventTwo" />
+          <Text>{eventTwoLabel}</Text>
+        </div>
+      )
+    }
     return (
       <div className="calendar">
         <Calendar 
@@ -175,12 +233,10 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
           headerRender={({ value, onChange }) => this.headerRender(value, onChange)}
         />
         <section className="calendar-legend">
+          {eventOne}
+          {eventTwo}
           <div>
-            <div />
-            <Text>PINKMAS</Text>
-          </div>
-          <div>
-            <div />
+            <div className="legend-icon general"/>
             <Text>MOIC general</Text>
           </div>
         </section>

@@ -43,17 +43,12 @@ const CalendarPage = () => {
         <div className="m20">
           <Calendar 
             resetDay={2} 
-            soldOutDates={["2020-02-02", "2020-02-07"]} 
-            eventDates={["2020-01-23", "2020-01-24"]}
-            discountDates={["2020-01-27", "2020-01-29"]}
-          />
-        </div>
-        <div className="m20">
-          <Calendar 
-            resetDay={2} 
-            soldOutDates={["2020-02-02", "2020-02-07"]} 
-            eventDates={["2020-01-23", "2020-01-24"]}
-            discountDates={["2020-01-27", "2020-01-29"]}
+            soldOutDates={["2020-02-10T00:00:00Z", "2020-02-17T00:00:00Z", "2020-02-24T00:00:00Z"]} 
+            eventOneDates={["2020-02-10T00:00:00Z", "2020-02-11T00:00:00Z", "2020-02-12T00:00:00Z"]}
+            eventOneLabel={"PINKMAS"}
+            discountDates={["2020-02-10T00:00:00Z", "2020-02-11T00:00:00Z", "2020-02-12T00:00:00Z"]}
+            closedDates={["2020-02-13T00:00:00Z", "2020-02-14T00:00:00Z"]}
+            openedDates={["2020-02-12T00:00:00Z"]}
           />
         </div>
       </section>
