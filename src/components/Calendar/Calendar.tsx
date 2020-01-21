@@ -1,11 +1,11 @@
-import React from 'react';
-import Calendar, {CalendarProps as AntCalendarProps} from 'antd/es/calendar';
+import React, {MouseEvent} from 'react';
+import Calendar, {CalendarProps as AntCalendarProps } from 'antd/es/calendar';
 
 import './less/calendar.less';
 
 import moment, { Moment } from 'moment';
 import DateCell from './DateCell';
-import { Text } from '@components/index';
+import { Text, Button } from '@components/index';
 
 interface CalendarProps extends AntCalendarProps {
   //* disabled dates
@@ -22,7 +22,7 @@ interface CalendarState {
   disabledDates: {[key: string]: string };
   discountDates: {[key: string]: boolean};
   eventDates: {[key: string]: boolean};
-  month: number;
+  month: string;
 }
 
 class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
@@ -33,7 +33,7 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
       disabledDates: this.setDatesToState("disable"),
       discountDates: this.setDatesToState("discount", this.props.discountDates),
       eventDates: this.setDatesToState("event", this.props.eventDates),
-      month: moment().month(),
+      month: moment().format("MMMM YYYY"),
     }
   }
 
@@ -72,7 +72,7 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
     const beforeCurrentDay = current < moment().startOf('day');
     const formatedDate = current.format("LL");
 
-    if(month !== current.month()) return true;
+    if(month !== current.format("MMMM YYYY")) return true;
     if(disabledDates && disabledDates[formatedDate]){
       if (disabledDates[formatedDate] === "closed") return true;
       else return false;
@@ -89,7 +89,7 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
     let disable, event, discount = false;
 
     // turn off all dates not in current month shown
-    if(date.month() !== month){
+    if(date.format("MMMM YYYY") !== month){
       return <DateCell displayOff />
     }
 
@@ -112,7 +112,7 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
 
   onPanelChange = (date: Moment, mode: "month" | "year" | undefined ) => {
     const { month } = this.state;
-    const newMonth = date.month();
+    const newMonth = date.format("MMMM YYYY");
 
     if(month !== newMonth){
       this.setState({
@@ -124,19 +124,29 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
     return
   };
 
-  // headerRender = (value: Moment, type: string, onChange: () => void, onTypeChange: () => void) => {
-  //   debugger
-  //   return (
-  //     <div></div>
-  //   )
-  // }
-
-  render(){
-    return (
-      <div className="calendar">
+  headerRender = (value: Moment, onChange: ((value: Moment) => void) | undefined ) => {
+    //! replace button to arrows
+    if(onChange){
+      return (
         <header className="calendar-header">
           <div className="calendar-header-title">
-            <Text>January</Text>
+            <Button 
+              onClick={ () => {
+                const newValue = value.clone();
+                newValue.subtract(1, 'M');
+                onChange(newValue);
+              }}
+              type="text"
+            >prev</Button>
+          <Text>{this.state.month}</Text>
+            <Button 
+              onClick={ () => {
+                  const newValue = value.clone();
+                  newValue.add(1, 'M');
+                  onChange(newValue)
+              }}
+              type="text"
+            >next</Button>
           </div>
           <div className="calendar-header-weekday">
             <Text className="weekday-text">S</Text>
@@ -148,12 +158,21 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
             <Text className="weekday-text">Sa</Text>
           </div>
         </header>
+      )
+    }
+
+    return null;
+  }
+
+  render(){
+    return (
+      <div className="calendar">
         <Calendar 
           fullscreen={false} 
           disabledDate={this.disabledDate}
           dateFullCellRender={this.dateFullCellRender}
           onPanelChange={this.onPanelChange}
-          // headerRender={() => this.headerRender}
+          headerRender={({ value, onChange }) => this.headerRender(value, onChange)}
         />
         <section className="calendar-legend">
           <div>

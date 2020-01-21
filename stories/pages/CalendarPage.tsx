@@ -38,8 +38,16 @@ const CalendarPage = () => {
           </div>
         </aside>
       </section>
-      <section className="m20">
+      <section className="m20 story-flex">
         <h4 className="mb20">Calendar</h4>
+        <div className="m20">
+          <Calendar 
+            resetDay={2} 
+            soldOutDates={["2020-02-02", "2020-02-07"]} 
+            eventDates={["2020-01-23", "2020-01-24"]}
+            discountDates={["2020-01-27", "2020-01-29"]}
+          />
+        </div>
         <div className="m20">
           <Calendar 
             resetDay={2} 
