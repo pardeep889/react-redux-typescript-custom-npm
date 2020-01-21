@@ -15,6 +15,12 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
+- task: Npm@1
+  inputs:
+    command: 'publish'
+    publishRegistry: 'useFeed'
+    publishFeed: '1479da33-7cbe-40f1-8bcf-2f74cc0c8b9f/5451a091-7e95-4d2a-be34-b35ecf651bf8'
+
 - script: |
     npm install -g webpack webpack-cli --save-dev
     npm install
