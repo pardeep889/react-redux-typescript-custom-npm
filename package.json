@@ -12,9 +12,6 @@
     "type": "git",
     "url": "git+https://github.com/fig8-tech/fig8-components.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "author": "fig8",
   "license": "ISC",
   "bugs": {
