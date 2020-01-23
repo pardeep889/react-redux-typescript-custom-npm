@@ -11,15 +11,28 @@ const TimePickerPage = () => {
       <h3 className="story-title">Time Picker</h3>
       <section>
         <h4 className="story-title">Time Slot</h4>
-        <div className="m20">
-          <TimeSlot time="2020-02-15T00:00:00Z" disabled />
-        </div>
-        <div className="m20">
-          <TimeSlot time="2020-02-15T00:00:00Z" />
-        </div>
-        <div className="m20">
-          <TimeSlot time="2020-02-15T00:00:00Z" discount/>
-        </div>
+        <aside className="story-flex story-background">
+          <div className="m20">
+            <h6 className="mb20">Normal</h6>
+            <TimeSlot time="6:00 pm"/>
+          </div>
+          <div className="m20">
+            <h6 className="mb20">Disabled</h6>
+            <TimeSlot time="6:00 pm" disabled />
+          </div>
+          <div className="m20">
+            <h6 className="mb20">Selected</h6>
+            <TimeSlot time="6:00 pm" selected/>
+          </div>
+          <div className="m20">
+            <h6 className="mb20">Discount</h6>
+            <TimeSlot time="6:00 pm" discount/>
+          </div>
+          <div className="m20">
+            <h6 className="mb20">Ticket</h6>
+            <TimeSlot time="6:00 pm" tickets={5}/>
+          </div>
+        </aside>
       </section>
     </div>
   )

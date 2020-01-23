@@ -1,46 +1,43 @@
 @import '../../../assets/style/color.less';
 
 .time-slot {
+  user-select: none;
+
   position: relative;
   width: 88px;
   height: 48px;
 
-  background-color: @white;
-
-  box-shadow: none;
   border-radius: 34px;
+  background-color: @white;
+  border: 1px solid transparent;
 
   display: flex;
   justify-content: center;
 
-  .time-slot-text {
-    //* TEXT
-    color: @pomegranate;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-    letter-spacing: normal;
-    
-    display: flex;
-    align-items: center;
-    text-align: center;
-  }
+  //* TEXT
+  color: @pomegranate;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: normal;
+  
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  text-transform: uppercase;
 
   &:hover {
     border: 1px solid @strawberry;
     box-shadow: 0px 0px 10px @malt-shadow;
   }
 
-  &:focus {
+  &.selected {
+    color: @white;
     background-color: @cherry;
-
-    .time-slot-text{
-      color: @white;
-      font-weight: 500;
-    }
   }
 
-  &:disabled {
+  &.disabled {
     border: none;
     background-color: transparent;
 
@@ -53,7 +50,21 @@
     display: flex;
     align-items: center;
     text-align: center;
+
+    &:hover {
+      border: none;
+      box-shadow: none;
+    }
   }
+}
+
+// .time-slot-text{
+//   color: @white;
+//   font-weight: 500;
+// }
+
+.time-slot-text {
+
 }
 
 .discount {
@@ -77,4 +88,28 @@
   border-radius: 20px;
 
   background-color: @strawberry;
+}
+
+.ticket {
+  position: absolute;
+  right: 0px;
+  top: -8px;
+
+  width: auto;
+  height: 16px;
+
+  border-radius: 20px;
+  background-color: @strawberry;
+  padding: 0px 4px;
+
+  color: @white;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 15px;
+  text-transform: lowercase;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }

@@ -8,28 +8,27 @@ interface TimeSlotProps {
   discount?: boolean;
   tickets?: number;
   disabled?: boolean;
+  selected?: boolean;
 };
 
 const TimeSlot = (props: TimeSlotProps) => {
-  const { time, discount, tickets } = props;
+  const { time, discount, tickets, disabled, selected } = props;
   let discountCell, ticketCell = null;
+  let timeDisabled, timeSelected = "";
 
+  disabled ? timeDisabled = "disabled" : "";
+  selected ? timeSelected = "selected" : "";
 
-  const timeSlotClass = `time-slot`;
+  const timeSlotClass = `time-slot ${timeDisabled} ${timeSelected}`;
 
-  tickets ? ticketCell = <p className="ticket" >{tickets}</p> : null;
+  tickets ? ticketCell = <p className="ticket" >{`${tickets} tickets`}</p> : null;
   discount ? discountCell = <p className="discount" >%</p> : null;
 
   return (
-    <div>
+    <div className={timeSlotClass}>
+      <p>{time}</p>
       {ticketCell}
-      <button className={timeSlotClass} >
-        <p className="time-slot-text">
-          {moment(time).format("LT")}
-          {ticketCell}
-          {discountCell}
-        </p>
-      </button>
+      {discountCell}
     </div>
   )  
 };
