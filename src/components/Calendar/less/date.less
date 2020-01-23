@@ -1,0 +1,92 @@
+@import '../../../assets/style/color.less';
+
+.date {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0px;
+
+  width: 48px;
+  height: 48px;
+
+  border-radius: 30px;
+  background-color: @white;
+  border: 1px solid transparent;
+
+  // TEXT
+  color: @pomegranate;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  &:hover {
+    border: 1px solid @strawberry;
+    box-shadow: 0px 0px 10px @malt-shadow;
+  }
+
+  &.eventOne {
+    background-color: @malt;
+  }
+
+  &.eventTwo {
+    background-color: @strawberry;
+  }
+
+  &.selected {
+    color: @white;
+    background-color: @cherry;
+  }
+
+  &.disabled {
+    border: none;
+    background-color: transparent;
+
+    // TEXT
+    color: #C38395;
+
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    &:hover {
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  &.display-off {
+    display: none;
+  }
+}
+
+.date-discount {
+  position: absolute;
+  left: 32px;
+  bottom: 32px;
+
+  width: 16px;
+  height: 16px;
+
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: @white;
+
+  border-radius: 20px;
+
+  background-color: @strawberry;
+}

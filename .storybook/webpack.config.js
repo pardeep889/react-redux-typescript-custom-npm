@@ -40,6 +40,7 @@ module.exports = ({ config }) => {
 
   config.resolve.alias['@style'] = path.resolve(__dirname, '../src/assets/style/')
   config.resolve.alias['@components'] = path.resolve(__dirname, '../src/components/')
+  config.resolve.alias['@icon'] = path.resolve(__dirname, '../src/assets/icon/')
 
   return config;
 };
