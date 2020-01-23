@@ -26,6 +26,7 @@ interface CalendarProps extends AntCalendarProps {
   discountDates?: string[];
 
   //* events
+  //! next sprint to add mandatory props to label if date is provided
   eventOneDates?: string[];
   eventOneLabel?: string;
 
@@ -52,7 +53,6 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
       disabledDates: this.setDatesToState("disable"),
 
       // other dates to be key value pairs {"January 01, 2020": true}
-
       discountDates: this.setDatesToState("discount", this.props.discountDates),
       eventOneDates: this.setDatesToState("event", this.props.eventOneDates),
       eventTwoDates: this.setDatesToState("event", this.props.eventTwoDates),
@@ -60,16 +60,20 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
 
       // current month & year on calendar
       month: moment().format("MMMM YYYY"),
+
+      // selected date
       selected: moment().format("LL"),
     }
   }
 
   setDatesToState = (type: "disable" | "event" | "discount" | "open" , dates?: string[]) => {
+    // set disabledDates to state, ex: {"January 01, 2020": "closed", "January 02, 2020": "opened"}
     if(type === "disable"){
       const { closedDates, soldOutDates } = this.props;
       const allDates: string[] = [];
       let disabledDates = {};
       
+      // combine disabled styled dates
       closedDates ? allDates.push(...closedDates) : null ;
       soldOutDates ? allDates.push(...soldOutDates) : null ;
       
@@ -81,6 +85,7 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
       return disabledDates;
     }
 
+    // default: set dates to state, ex: {"March 20, 2020": true}
     let dateObj = {};
 
     dates?.forEach(date => {
@@ -92,6 +97,7 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
   };
 
   disabledDate = (current: Moment) => {
+    //Antd Calendar function to disable dates
     const { resetDay } = this.props;
     const { disabledDates, openedDates, month } = this.state;
 
@@ -101,7 +107,10 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
     const notCurrentMonth = month !== current.format("MMMM YYYY");
     const disabled = disabledDates && disabledDates[formattedDate];
 
+    // soldOut / closed / past days are always disabled
     if(beforeCurrentDay || notCurrentMonth || disabled) return true;
+
+    // manually opened days, ex: opening on Dec 24, 2019 (although typically it is a reset day)
     if(openedDates && openedDates[formattedDate]) return false;
 
     //reset is last if conditions above passes
@@ -111,6 +120,7 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
   };
 
   dateFullCellRender = (date: Moment) => {
+    // Antd function to override antd date cell styling and use Fig8 DateCell component
     const { resetDay } = this.props;
     const { disabledDates, eventOneDates, eventTwoDates, discountDates, openedDates, month, selected } = this.state;
 
@@ -125,7 +135,6 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
     const day = date.date();
 
     const reset = date.day() === resetDay;
-
     const beforeCurrentDay = date < moment().startOf('day');
     const formattedDate = date.format("LL");
     const disabled = disabledDates && disabledDates[formattedDate];
@@ -138,8 +147,8 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
     if(eventOneDates && eventOneDates[formattedDate]) event = 'eventOne';
     if(eventTwoDates && eventTwoDates[formattedDate]) event = 'eventTwo';
     if(discountDates && discountDates[formattedDate]) discount = true;
-    
-    //* SELECTED
+
+    //* SELECTED, show discount icon if true
     if(selected === formattedDate) return <DateCell selected day={day} discount={discount} />;
 
     //* OPENED DATES
@@ -148,13 +157,12 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
     //* RESET DATES
     if(reset || beforeCurrentDay) return <DateCell disabled day={day} />;
 
-
-
     //* default return
     return <DateCell day={day} event={event} discount={discount} />;
   }
 
   onPanelChange = (date: Moment, mode: "month" | "year" | undefined ) => {
+    // antd function, when the month is changed update state to match
     const { month } = this.state;
     const newMonth = date.format("MMMM YYYY");
 
@@ -169,6 +177,7 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
   };
 
   headerRender = (value: Moment, onChange: ((value: Moment) => void) | undefined ) => {
+    // antd function, custom header
     if(onChange){
       return (
         <header className="calendar-header">
@@ -210,6 +219,7 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
   }
 
   onSelect = (date: Moment) => {
+    //antd function, select state (for dateFullCellRender)
     const formattedDate = date.format("LL");
     this.setState({
       ...this.state,
@@ -218,10 +228,10 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
   }
 
   render(){
-    const { eventOneDates, eventTwoDates } = this.state;
     const { eventOneLabel, eventTwoLabel } = this.props;
     let eventOne, eventTwo = null;
     
+    // * Legend, with one event
     if(eventOneLabel){
       eventOne = (
         <div className="legend-key">
@@ -230,7 +240,8 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
         </div>
       )
     }
-
+    
+    // * Legend, with two events
     if(eventTwoLabel){
       eventTwo = (
         <div className="legend-key">
@@ -239,6 +250,7 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
         </div>
       )
     }
+
     return (
       <div className="calendar">
         <Calendar 

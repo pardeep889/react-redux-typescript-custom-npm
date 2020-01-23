@@ -19,12 +19,14 @@ function DateCell(props: DateCellProps) {
   let dateSelected = "";
   let dateDiscount = null;
 
+  // display off: don't show dates that aren't in current month
   if(displayOff){
     return (
       <div className="date-display-off"/>
     )
   }
 
+  // assign states to date cell, (disabled | selected | event | discount)
   disabled ? dateDisabled = "disabled" : "";
   selected ? dateSelected = "selected" : "";
   event ? dateEvent = event : "";
