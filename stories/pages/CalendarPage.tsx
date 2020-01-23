@@ -25,8 +25,12 @@ const CalendarPage = () => {
             <DateCell disabled day={6}/>
           </div>
           <div className="m20">
-            <h6 className="mb20">Event</h6>
-            <DateCell event day={6}/>
+            <h6 className="mb20">Event One</h6>
+            <DateCell event="eventOne" day={6}/>
+          </div>
+          <div className="m20">
+            <h6 className="mb20">Event Two</h6>
+            <DateCell event="eventTwo" day={6}/>
           </div>
           <div className="m20">
             <h6 className="mb20">Selected</h6>

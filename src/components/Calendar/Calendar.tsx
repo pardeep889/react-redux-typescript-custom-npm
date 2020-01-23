@@ -110,9 +110,10 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
 
   dateFullCellRender = (date: Moment) => {
     const { resetDay } = this.props;
-    const { disabledDates, eventOneDates, discountDates, openedDates, month } = this.state;
+    const { disabledDates, eventOneDates, eventTwoDates, discountDates, openedDates, month } = this.state;
 
-    let event, discount = false;
+    let discount = false;
+    let event: "eventOne" | "eventTwo" | undefined;
     
     // turn off all dates not in current month shown
     const notCurrentMonth = month !== date.format("MMMM YYYY");
@@ -132,8 +133,9 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
     if(beforeCurrentDay || disabled) return <DateCell disabled day={day} />;
 
     //* EVENT/DISCOUNT DATES
-    if(eventOneDates && eventOneDates[date.format("LL")]) event = true;
-    if(discountDates && discountDates[date.format("LL")]) discount = true;
+    if(eventOneDates && eventOneDates[formattedDate]) event = 'eventOne';
+    if(eventTwoDates && eventTwoDates[formattedDate]) event = 'eventTwo';
+    if(discountDates && discountDates[formattedDate]) discount = true;
 
     //* OPENED DATES
     if(opened) return <DateCell day={day} event={event} discount={discount} />;
