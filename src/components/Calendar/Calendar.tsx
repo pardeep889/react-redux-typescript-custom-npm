@@ -40,6 +40,7 @@ interface CalendarState {
   eventTwoDates: {[key: string]: boolean};
   openedDates: {[key: string]: boolean};
   month: string;
+  selected: string;
 }          
 
 class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
@@ -59,6 +60,7 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
 
       // current month & year on calendar
       month: moment().format("MMMM YYYY"),
+      selected: moment().format("LL"),
     }
   }
 
@@ -110,7 +112,7 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
 
   dateFullCellRender = (date: Moment) => {
     const { resetDay } = this.props;
-    const { disabledDates, eventOneDates, eventTwoDates, discountDates, openedDates, month } = this.state;
+    const { disabledDates, eventOneDates, eventTwoDates, discountDates, openedDates, month, selected } = this.state;
 
     let discount = false;
     let event: "eventOne" | "eventTwo" | undefined;
@@ -136,12 +138,16 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
     if(eventOneDates && eventOneDates[formattedDate]) event = 'eventOne';
     if(eventTwoDates && eventTwoDates[formattedDate]) event = 'eventTwo';
     if(discountDates && discountDates[formattedDate]) discount = true;
+    
+    //* SELECTED
+    if(selected === formattedDate) return <DateCell selected day={day} discount={discount} />;
 
     //* OPENED DATES
     if(opened) return <DateCell day={day} event={event} discount={discount} />;
     
     //* RESET DATES
     if(reset || beforeCurrentDay) return <DateCell disabled day={day} />;
+
 
 
     //* default return
@@ -203,6 +209,14 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
     return null;
   }
 
+  onSelect = (date: Moment) => {
+    const formattedDate = date.format("LL");
+    this.setState({
+      ...this.state,
+      selected: formattedDate,
+    })
+  }
+
   render(){
     const { eventOneDates, eventTwoDates } = this.state;
     const { eventOneLabel, eventTwoLabel } = this.props;
@@ -233,6 +247,7 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
           dateFullCellRender={this.dateFullCellRender}
           onPanelChange={this.onPanelChange}
           headerRender={({ value, onChange }) => this.headerRender(value, onChange)}
+          onSelect={this.onSelect}
         />
         <section className="calendar-legend">
           {eventOne}

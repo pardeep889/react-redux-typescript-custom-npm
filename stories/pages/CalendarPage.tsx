@@ -48,10 +48,8 @@ const CalendarPage = () => {
           <Calendar 
             resetDay={2} 
             soldOutDates={["2020-02-10T00:00:00Z", "2020-02-17T00:00:00Z", "2020-02-24T00:00:00Z"]} 
-            eventOneDates={["2020-02-10T00:00:00Z", "2020-02-11T00:00:00Z", "2020-02-12T00:00:00Z"]}
+            eventOneDates={["2020-02-20T00:00:00Z", "2020-02-21T00:00:00Z", "2020-02-22T00:00:00Z"]}
             eventOneLabel={"PINKMAS"}
-            eventTwoDates={["2020-02-20T00:00:00Z", "2020-02-21T00:00:00Z", "2020-02-22T00:00:00Z"]}
-            eventTwoLabel={"Nightmare Show"}
             discountDates={["2020-02-10T00:00:00Z", "2020-02-11T00:00:00Z", "2020-02-12T00:00:00Z"]}
             closedDates={["2020-02-13T00:00:00Z", "2020-02-14T00:00:00Z"]}
             openedDates={["2020-02-12T00:00:00Z"]}
