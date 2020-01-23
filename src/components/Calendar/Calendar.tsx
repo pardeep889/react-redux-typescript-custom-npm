@@ -186,13 +186,13 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
             </div>
           </div>
           <div className="calendar-header-weekday">
-            <Text className="weekday-text">S</Text>
-            <Text className="weekday-text">M</Text>
-            <Text className="weekday-text">T</Text>
-            <Text className="weekday-text">W</Text>
-            <Text className="weekday-text">Th</Text>
-            <Text className="weekday-text">F</Text>
-            <Text className="weekday-text">Sa</Text>
+            <Text className="weekday-text secondary-text">S</Text>
+            <Text className="weekday-text secondary-text">M</Text>
+            <Text className="weekday-text secondary-text">T</Text>
+            <Text className="weekday-text secondary-text">W</Text>
+            <Text className="weekday-text secondary-text">Th</Text>
+            <Text className="weekday-text secondary-text">F</Text>
+            <Text className="weekday-text secondary-text">Sa</Text>
           </div>
         </header>
       )
@@ -206,20 +206,20 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
     const { eventOneLabel, eventTwoLabel } = this.props;
     let eventOne, eventTwo = null;
     
-    if(eventOneDates){
+    if(eventOneLabel){
       eventOne = (
-        <div>
-          <div className="legend-icon eventOne" />
-          <Text>{eventOneLabel}</Text>
+        <div className="legend-key">
+          <div className="legend-icon event-one" />
+          <Text className="legend-text secondary-text">{eventOneLabel}</Text>
         </div>
       )
     }
 
-    if(eventTwoDates){
+    if(eventTwoLabel){
       eventTwo = (
-        <div>
-          <div className="legend-icon eventTwo" />
-          <Text>{eventTwoLabel}</Text>
+        <div className="legend-key">
+          <div className="legend-icon event-two" />
+          <Text className="legend-text secondary-text">{eventTwoLabel}</Text>
         </div>
       )
     }
@@ -235,9 +235,9 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
         <section className="calendar-legend">
           {eventOne}
           {eventTwo}
-          <div>
+          <div className="legend-key">
             <div className="legend-icon general"/>
-            <Text>MOIC general</Text>
+            <Text className="legend-text secondary-text" >MOIC general</Text>
           </div>
         </section>
       </div>

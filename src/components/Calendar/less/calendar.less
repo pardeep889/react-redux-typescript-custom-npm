@@ -7,11 +7,17 @@
   align-items: center;
 
   width: 396px;
-  // height: 436px;
+  height: 494px;
   padding: 32px 22px;
   border-radius: 12px;
 
   background-color: @strawberry-light;
+
+  .secondary-text {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+  }
 
   .calendar-header {
     width: 100%;
@@ -36,12 +42,53 @@
     }
   }
 
-
   .calendar-legend {
     display: flex;
+    justify-content: space-around;
+
     padding-top: 24px;
 
+    width: 100%;
+    // height: 32px;
     
+    .legend-key {
+      width: 100%;
+      height: 32px;
+
+      display: flex;
+      justify-content: center;
+      // align-items: center;
+
+      margin: 0px 4px;
+
+      .legend-text {
+        box-sizing: content-box;
+        margin-left: 8px;
+        overflow-wrap: break-word;
+        // width: 75%;
+      }
+
+      .legend-icon {
+        min-width: 16px;
+        min-height: 16px;
+        margin: 8px 0px;
+
+        border-radius: 50%;
+  
+        &.general {
+          background-color: @white;
+        }
+
+        &.event-one {
+          background-color: @malt;
+        }
+
+        &.event-two {
+          background-color: @strawberry;
+        }
+      }
+    }
+
   }
 }
 
