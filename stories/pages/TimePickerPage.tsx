@@ -11,7 +11,7 @@ const TimePickerPage = () => {
       <h3 className="story-title">Time Picker</h3>
       <section>
         <h4 className="story-title">Time Slot</h4>
-        <aside className="story-flex story-background">
+        <aside className="story-flex story-background m20">
           <div className="m20">
             <h6 className="mb20">Normal</h6>
             <TimeSlot time="6:00 pm"/>
