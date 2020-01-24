@@ -1,10 +1,36 @@
 import React from 'react';
 
 //COMPONENT
-// import { TimePicker } from '@components/index';
+import { TimePicker } from '@components/index';
 import TimeSlot from '@components/TimePicker/TimeSlot';
 
 const TimePickerPage = () => {
+  const ticketsAvailable = {
+    "2020-02-10T14:00:00Z": 25, 
+    "2020-02-10T14:30:00Z": 10, 
+    "2020-02-10T15:00:00Z": 3,
+    "2020-02-10T15:30:00Z": 0,
+    "2020-02-10T16:00:00Z": 15, 
+    "2020-02-10T16:30:00Z": 10, 
+    "2020-02-10T17:00:00Z": 1,
+    "2020-02-10T17:30:00Z": 0,
+    "2020-02-10T18:00:00Z": 25, 
+    "2020-02-10T18:30:00Z": 10, 
+    "2020-02-10T19:00:00Z": 3,
+    "2020-02-10T19:30:00Z": 0,
+    "2020-02-10T20:00:00Z": 25, 
+    "2020-02-10T20:30:00Z": 0, 
+    "2020-02-10T21:00:00Z": 0,
+    "2020-02-10T21:30:00Z": 0,
+    "2020-02-10T22:00:00Z": 25, 
+    "2020-02-10T22:30:00Z": 10, 
+    "2020-02-10T23:00:00Z": 5,
+    "2020-02-10T23:30:00Z": 0,
+    "2020-02-10T00:00:00Z": 25, 
+    "2020-02-11T00:30:00Z": 10, 
+    "2020-02-11T01:00:00Z": 5,
+    "2020-02-11T01:30:00Z": 0
+  }
 
   return (
     <div>
@@ -33,6 +59,15 @@ const TimePickerPage = () => {
             <TimeSlot time="6:00 pm" tickets={5}/>
           </div>
         </aside>
+      </section>
+      <section>
+        <h4 className="story-title">Time Picker</h4>
+        <main className="m20">
+          <TimePicker 
+            ticketsAvailable={ticketsAvailable}
+            lowTicketThreshold={5}
+          />
+        </main>
       </section>
     </div>
   )
