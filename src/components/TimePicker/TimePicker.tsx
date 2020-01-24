@@ -33,10 +33,10 @@ class TimePickerWrapper extends React.Component <TimeProps & React.HTMLProps<HTM
       const time = moment(timeSlot).format("hh:mm A");
       const tickets = ticketsAvailable[timeSlot];
 
-      if(tickets === 0) return <TimeSlot time={time} disabled/> ;
-      if(tickets <= lowTicketThreshold) return <TimeSlot time={time} tickets={tickets}/>;
+      if(tickets === 0) return <TimeSlot time={time} disabled key={timeSlot}/> ;
+      if(tickets <= lowTicketThreshold) return <TimeSlot time={time} tickets={tickets} key={timeSlot}/>;
 
-      return <TimeSlot time={time}/>;
+      return <TimeSlot time={time} key={timeSlot}/>;
     });
 
     return timeSlot;
@@ -44,8 +44,11 @@ class TimePickerWrapper extends React.Component <TimeProps & React.HTMLProps<HTM
 
   render(){
     return (
-      <div className="time-picker">
-        {this.renderTimeSlot()}
+      <div className="time-picker-container">
+        <div className="time-picker">
+          {this.renderTimeSlot()}
+        </div>
+        <div className="time-picker-blur" />
       </div>
     )
   }
