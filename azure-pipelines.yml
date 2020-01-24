@@ -24,7 +24,7 @@ steps:
 - task: Npm@1
   inputs:
     command: 'custom'
-    customCommand: 'version --no-git-tag-version 0.0.$(Build.BuildId)'
+    customCommand: 'version --no-git-tag-version 0.1.$(Build.BuildId)'
   displayName: 'Bump patch version'
 
 - task: Npm@1
