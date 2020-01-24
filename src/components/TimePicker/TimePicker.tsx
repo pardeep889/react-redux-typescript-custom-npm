@@ -5,6 +5,8 @@ import './less/time-picker.less';
 import './TimeSlot';
 import TimeSlot from './TimeSlot';
 
+//! timeslots to be radios? see antd radio buttons
+
 interface TimeProps{
   ticketsAvailable: {[key: string]: number};
   lowTicketThreshold: number;
