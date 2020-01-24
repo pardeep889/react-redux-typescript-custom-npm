@@ -15,24 +15,21 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-- script: |
-    npm install -g webpack webpack-cli --save-dev
-    npm install
-    npx webpack --config webpack.config.js
-  displayName: 'npm install, run webpack'
+- task: Npm@1
+  inputs:
+    command: 'install'
+  displayName: 'NPM install via task'
 
-- script: |
-    npm install
-  displayName: 'npm install'
 
 - task: Npm@1
   inputs:
     command: 'custom'
     customCommand: 'version --no-git-tag-version 0.0.$(Build.BuildId)'
-  displayName: 'npm ver'
+  displayName: 'Bump patch version'
 
 - task: Npm@1
   inputs:
     command: 'publish'
     publishRegistry: 'useFeed'
     publishFeed: '1479da33-7cbe-40f1-8bcf-2f74cc0c8b9f/5451a091-7e95-4d2a-be34-b35ecf651bf8'
+  displayName: 'Publish to Artifacts'
