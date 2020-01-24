@@ -15,6 +15,12 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
+- task: Npm@1
+  inputs:
+    command: 'install'
+  displayName: 'NPM install via task'
+
+    
 - script: |
     npm install -g webpack webpack-cli --save-dev
     npm install
