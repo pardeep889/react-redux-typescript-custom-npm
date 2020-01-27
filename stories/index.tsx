@@ -6,6 +6,7 @@ import ButtonPage from './pages/ButtonPage';
 import CalendarPage from './pages/CalendarPage';
 import CheckboxPage from './pages/CheckboxPage';
 import InputPage from './pages/InputPage';
+import TogglePage from './pages/TogglePage';
 import TypographyPage from './pages/TypographyPage';
 
 import './assets/style/index.less';
@@ -16,4 +17,5 @@ storiesOf('General', module)
 .add('Calendar', () => <CalendarPage />)
 .add('Checkbox', () =>  <CheckboxPage />)
 .add('Input', () => <InputPage />)
+.add('Toggle', () => <TogglePage />)
 .add('Typography', () => <TypographyPage />);

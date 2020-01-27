@@ -1,0 +1,35 @@
+@import '../../../assets/style/color.less';
+
+
+@switch-color: @strawberry;
+@switch-height: 24px;
+
+
+.ant-switch{
+    background-color: @malt;
+    min-width: 48px;
+    
+    &::after{
+        opacity: 0.8;
+        box-shadow: 0px 0px 4px rgba(142, 21, 55, 0.3);
+    }
+
+    &-checked {
+        background-color: @strawberry;
+        &::after {
+            opacity: 1 !important;     
+        }
+    }
+
+    &:hover{
+        border: 1px solid #F89ABA;
+        box-shadow: 0px 0px 10px rgba(248, 154, 186, 0.4);
+        border-radius: 102px;
+    }
+
+    &-disabled{
+        &::after{
+            box-shadow: none;
+        }
+    }
+}
