@@ -7,17 +7,13 @@
   width: 88px;
   height: 48px;
 
-  border-radius: 34px;
-  background-color: @white;
-  border: 1px solid transparent;
-
   display: flex;
   justify-content: center;
 
   margin-top: 12px;
 
   //* TEXT
-  color: @pomegranate;
+  // color: @pomegranate;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
@@ -28,68 +24,71 @@
   text-align: center;
 
   text-transform: uppercase;
+}
+
+//* RADIO BUTTON
+.ant-radio-button-wrapper:first-child,
+.ant-radio-button-wrapper:last-child,
+.ant-radio-button-wrapper {
+  border-radius: 34px;
+  background-color: @white;
+  border: 1px solid transparent;
+  color: @pomegranate;
 
   &:hover {
+    color: @pomegranate;
     border: 1px solid @strawberry;
     box-shadow: 0px 0px 10px @malt-shadow;
   }
 
-  &.selected {
-    color: @white;
-    background-color: @cherry;
+  &:focus-within {
+    outline: none;
   }
 
-  &.disabled {
-    border: none;
+  &:not(:first-child)::before {
     background-color: transparent;
-
-    // TEXT
-    color: #C38395;
-
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 16px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-
-    &:hover {
-      border: none;
-      box-shadow: none;
-    }
   }
 }
 
-// .time-slot-text{
-//   color: @white;
-//   font-weight: 500;
-// }
+//* DISABLE
+.ant-radio-button-wrapper-disabled:first-child, 
+.ant-radio-button-wrapper-disabled:last-child,
+.ant-radio-button-wrapper-disabled {
+  color: @pomegranate-light;
+  background-color: transparent;
+  border: none;
 
-.time-slot-text {
-
+  &:hover {
+    color: @pomegranate-light;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+  }
 }
 
-.discount {
-  position: absolute;
-  right: 0px;
-  top: -8px;
-
-  width: 16px;
-  height: 16px;
-
-  font-size: 10px;
-  font-weight: 600;
-  line-height: 15px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+//* CHECKED
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled),
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):active,
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):first-child {
+  
   color: @white;
+  background-color: @cherry;
+  border-color: transparent;
+  box-shadow: none;
 
-  border-radius: 20px;
+  &:focus-within {
+    outline: none;
+  }
 
-  background-color: @strawberry;
+  &:hover {
+    color: @white;
+    border: 1px solid transparent;
+    box-shadow: 0px 0px 10px transparent;
+  }
+
+  &::before {
+    background-color: transparent !important;
+  }
 }
 
 .ticket {
@@ -113,5 +112,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }

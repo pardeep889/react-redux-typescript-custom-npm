@@ -1,35 +1,29 @@
 import React from 'react';
-import moment from 'moment';
+import Radio, { RadioProps as AntRadioProps } from 'antd/es/radio'
 
 import './less/time-slot.less';
+import { relativeTimeThreshold } from 'moment';
 
-interface TimeSlotProps {
+interface TimeSlotProps extends AntRadioProps {
   time: string;
-  discount?: boolean;
   tickets?: number;
   disabled?: boolean;
-  selected?: boolean;
 };
 
 const TimeSlot = (props: TimeSlotProps) => {
-  const { time, discount, tickets, disabled, selected } = props;
+  const { time, tickets} = props;
   let discountCell, ticketCell = null;
-  let timeDisabled, timeSelected = "";
 
-  disabled ? timeDisabled = "disabled" : "";
-  selected ? timeSelected = "selected" : "";
-
-  const timeSlotClass = `time-slot ${timeDisabled} ${timeSelected}`;
+  const timeSlotClass = `time-slot`;
 
   tickets ? ticketCell = <p className="ticket" >{`${tickets} tickets`}</p> : null;
-  discount ? discountCell = <p className="discount" >%</p> : null;
 
   return (
-    <div className={timeSlotClass}>
-      <p>{time}</p>
+    <Radio.Button className={timeSlotClass} {...props}>
+      {time}
       {ticketCell}
       {discountCell}
-    </div>
+    </Radio.Button>
   )  
 };
 
