@@ -6,7 +6,7 @@
   "scripts": {
     "prepare": "npm run build",
     "build": "webpack --mode production",
-    "storybook": "start-storybook -p 8080"
+    "storybook": "start-storybook -p 8080 --ci"
   },
   "repository": {
     "type": "git",
@@ -37,6 +37,7 @@
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "less-plugin-glob": "^3.0.0",
+    "moment": "^2.24.0",
     "react-docgen-typescript-loader": "^3.6.0",
     "style-loader": "^1.1.2",
     "ts-loader": "^6.2.1",

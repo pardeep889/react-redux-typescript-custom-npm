@@ -7,6 +7,7 @@ export { default as Calendar } from './Calendar/Calendar';
 export { default as Checkbox } from './Checkbox/Checkbox';
 export { default as Input } from './Input/Input';
 export { default as Text } from './Typography/Text';
+export { default as TimePicker } from './TimePicker/TimePicker';
 export { default as Title } from './Typography/Title';
 export { default as Toggle } from './Toggle/Toggle';
 

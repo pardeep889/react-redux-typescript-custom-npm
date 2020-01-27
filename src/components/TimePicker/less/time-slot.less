@@ -1,0 +1,115 @@
+@import '../../../assets/style/color.less';
+
+.time-slot {
+  user-select: none;
+
+  position: relative;
+  width: 88px;
+  height: 48px;
+
+  display: flex;
+  justify-content: center;
+
+  margin-top: 12px;
+
+  //* TEXT
+  // color: @pomegranate;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: normal;
+  
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  text-transform: uppercase;
+}
+
+//* RADIO BUTTON
+.ant-radio-button-wrapper:first-child,
+.ant-radio-button-wrapper:last-child,
+.ant-radio-button-wrapper {
+  border-radius: 34px;
+  background-color: @white;
+  border: 1px solid transparent;
+  color: @pomegranate;
+
+  &:hover {
+    color: @pomegranate;
+    border: 1px solid @strawberry;
+    box-shadow: 0px 0px 10px @malt-shadow;
+  }
+
+  &:focus-within {
+    outline: none;
+  }
+
+  &:not(:first-child)::before {
+    background-color: transparent;
+  }
+}
+
+//* DISABLE
+.ant-radio-button-wrapper-disabled:first-child, 
+.ant-radio-button-wrapper-disabled:last-child,
+.ant-radio-button-wrapper-disabled {
+  color: @pomegranate-light;
+  background-color: transparent;
+  border: none;
+
+  &:hover {
+    color: @pomegranate-light;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+  }
+}
+
+//* CHECKED
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled),
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):active,
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):first-child {
+  
+  color: @white;
+  background-color: @cherry;
+  border-color: transparent;
+  box-shadow: none;
+
+  &:focus-within {
+    outline: none;
+  }
+
+  &:hover {
+    color: @white;
+    border: 1px solid transparent;
+    box-shadow: 0px 0px 10px transparent;
+  }
+
+  &::before {
+    background-color: transparent !important;
+  }
+}
+
+.ticket {
+  position: absolute;
+  right: 0px;
+  top: -8px;
+
+  width: auto;
+  height: 16px;
+
+  border-radius: 20px;
+  background-color: @strawberry;
+  padding: 0px 4px;
+
+  color: @white;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 15px;
+  text-transform: lowercase;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
