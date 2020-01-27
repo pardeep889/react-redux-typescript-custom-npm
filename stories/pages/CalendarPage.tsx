@@ -15,7 +15,7 @@ const CalendarPage = () => {
       <h3 className="story-title">Calendar</h3>
       <section className="m20">
         <h4 className="mb20">Date Cell</h4>
-        <aside className="story-flex story-calendar">
+        <aside className="story-flex story-background">
           <div className="m20">
             <h6 className="mb20">Normal</h6>
             <DateCell day={6}/>
