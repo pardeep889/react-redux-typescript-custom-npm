@@ -1,0 +1,115 @@
+@import '../../../assets/style/color.less';
+
+*{
+    
+}
+
+
+.ant-input-number{
+    user-select: none;
+    caret-color: transparent;
+    border:0;
+    box-shadow: none;
+    width: 56px;
+    margin-left:30px ;
+    margin-right:30px ;
+
+    *{
+        box-sizing: border-box;
+    }
+
+    &-input {
+        text-align: center;
+    }
+  
+    &-handler-wrap {
+        border:0;
+        background-color: transparent;
+        height: 30px;
+        opacity: 1;
+        width: 116px;
+        left: -30px;
+    }
+
+    &-handler-wrap:hover &-handler {
+        height: 30px;
+    }
+    
+    &-handler-up {
+        position: absolute;
+        right: 0;
+        border: 2px solid #EA0029;
+        border-radius: 15px;
+        width: 30px;
+        height: 30px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 6px;
+            width:14px;
+            border: 1px solid #EA0029;
+            border-radius:1px ;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 6px;
+            width:14px;
+            border: 1px solid #EA0029;
+            border-radius:1px ;
+            transform: rotate(-90deg);
+        }
+
+        &:hover {
+            height: 30px !important;
+        }
+    }
+
+    &-handler-down {
+        border: 2px solid #EA0029;
+        border-radius: 15px;
+        // display: block;
+        // float: right;
+        // top: -30px;
+        width: 30px;
+        height: 30px;
+        // right:0;
+        &:hover {
+            height: 30px !important;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 6px;
+            width:14px;
+            border: 1px solid #EA0029;
+            border-radius:1px ;
+        }
+    }
+
+    &-disabled{
+        background-color: transparent;
+        color:@malt;
+        
+    }
+
+    &-disabled &-handler-wrap{
+        pointer-events: none;
+        display: block;
+        user-select: none;
+
+        *,*:after,*:before{
+            border-color: @malt ;
+        }
+    }
+
+    .anticon {
+        display:none !important;  
+    }
+}
+
