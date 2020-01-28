@@ -1,0 +1,116 @@
+@import '../../../assets/style/color.less';
+
+@tooltip-max-width: 332px;
+
+//fig8 variables
+@tool-tip-placement: 5px;
+@tool-tip-arrow-width: 18px;
+@tool-tip-arrow-height: 6px;
+
+
+.ant-tooltip {
+  border-radius: 10px;
+
+  //Text
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+
+  &-inner {
+    padding: 12px;
+  }
+
+  &-arrow {
+    //Custom Triangle
+    width: 0;
+    height: 0;
+    border-left: (@tool-tip-arrow-width / 2) solid transparent;
+    border-right: (@tool-tip-arrow-width / 2) solid transparent;
+    border-top-width: @tool-tip-arrow-height;
+    border-top-style: solid;
+
+    //! border-radius removed because it didn't look nice. trust me
+    // border-radius: 10px;
+  }
+
+  // Placements
+  &-placement-top {
+    padding-bottom: @tool-tip-placement;
+  }
+
+  &-placement-bottom {
+    padding-top: @tool-tip-placement;
+  }
+
+  &-placement-left {
+    padding-left: @tool-tip-placement + @tool-tip-arrow-height;
+  }
+
+  &-placement-right {
+    padding-right: @tool-tip-placement + @tool-tip-arrow-height;
+  }
+
+  // Arrow Placements
+  &-placement-top &-arrow {
+    bottom: @tool-tip-placement - @tool-tip-arrow-height;
+  }
+
+  &-placement-bottom &-arrow {
+    top: @tool-tip-placement - @tool-tip-arrow-height;
+    //flip arrow 180deg and shift it over by its width
+    transform: rotate(180deg) translateX(9px);
+  }
+
+  &-placement-left &-arrow {
+    right: @tool-tip-placement - (@tool-tip-arrow-width / 2);
+    //flip arrow -90deg and shift it over by its half its height
+    transform: rotate(-90deg) translateX(3px);
+  }
+
+  &-placement-right &-arrow {
+    left: @tool-tip-placement - (@tool-tip-arrow-width / 2);
+    //flip arrow 90deg and shift it over by its half its height
+    transform: rotate(90deg) translateX(-3px);
+  }
+
+}
+
+//fig8 custom colors, nest ant classes under fig8 classes for particular types
+
+.tool-tip {
+  &.high {
+    .ant-tooltip{
+      &-inner {
+        background-color: @pomegranate;
+        color: @white;
+      }
+      &-arrow {
+        border-top-color: @pomegranate;
+      }
+    }
+  }
+  &.medium {
+    .ant-tooltip{
+      &-inner {
+        background-color: @malt;
+        color: @pomegranate;
+      }
+      &-arrow {
+        border-top-color: @malt;
+      }
+    }
+  }
+  &.low {
+    .ant-tooltip{
+      &-inner {
+        background-color: #fff8f9;
+        // background-color: @strawberry-light;
+        color: @pomegranate;
+      }
+      &-arrow {
+        border-top-color: #fff8f9;
+        // border-top-color: @strawberry-light;
+      }
+    }
+  }
+}
