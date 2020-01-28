@@ -2,15 +2,20 @@ import React from 'react';
 import InputNumber, { InputNumberProps as AntInputProps } from 'antd/es/input-number';
 import './less/spinner.less';
 
-interface InputNumberProps extends AntInputProps {}
+interface InputNumberProps extends AntInputProps {
+    min: number,
+    max: number
+}
 
 function SpinnerWrapper(props: InputNumberProps) {
-    const {disabled} = props;
-    let spinnerDisabled = "";
-    disabled ? spinnerDisabled = "disabled" : spinnerDisabled = "";
-    const spinnerClass = `spinner ${spinnerDisabled}`;
+    const {disabled,value,min,max} = props;
+    let spinnerDisabled =  disabled ? "disabled" : "";
+    const spinnerClass = `spinner ${spinnerDisabled} `;
     return(
-        <InputNumber {...props}/>
+        <InputNumber 
+          {...props}
+          className={spinnerClass}
+        />
         
     );
 };
