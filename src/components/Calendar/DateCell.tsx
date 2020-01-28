@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { HTMLAttributes, ReactHTMLElement } from 'react';
 
 import './less/date.less';
 
-interface DateCellProps {
+interface DateCellProps extends  React.HTMLAttributes<HTMLDivElement>  {
   children?: React.ReactNode;
   day?: number;
   disabled?: boolean;
@@ -13,10 +13,7 @@ interface DateCellProps {
 }
 
 function DateCell(props: DateCellProps) {
-  const { day, disabled, displayOff, event, selected, discount } = props;
-  let dateDisabled = "";
-  let dateEvent = "";
-  let dateSelected = "";
+  const { day, disabled, displayOff, event, selected, discount, className } = props;
   let dateDiscount = null;
 
   // display off: don't show dates that aren't in current month
@@ -27,15 +24,21 @@ function DateCell(props: DateCellProps) {
   }
 
   // assign states to date cell, (disabled | selected | event | discount)
-  disabled ? dateDisabled = "disabled" : "";
-  selected ? dateSelected = "selected" : "";
-  event ? dateEvent = event : "";
+  let dateDisabled = disabled ? "disabled" : "";
+  let dateSelected = selected ? "selected" : "";
+  let dateEvent = event ? event : "";
+
   discount ? dateDiscount = <p className="date-discount" >%</p> : null
 
-  const dateCellClass = `date ${dateDisabled} ${dateEvent} ${dateSelected}`
+  let toolTip = className ? className : "";
+
+  let newProps = Object.assign({}, props);
+  className ? delete newProps.className : null;
+
+  const dateCellClass = `date ${dateDisabled} ${dateEvent} ${dateSelected} ${toolTip}`
 
   return (
-    <div className={dateCellClass}>
+    <div className={dateCellClass} {...newProps}>
       <p>{day}</p>
       {dateDiscount}
     </div>

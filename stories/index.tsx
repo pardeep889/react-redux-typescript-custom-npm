@@ -6,8 +6,9 @@ import ButtonPage from './pages/ButtonPage';
 import CalendarPage from './pages/CalendarPage';
 import CheckboxPage from './pages/CheckboxPage';
 import InputPage from './pages/InputPage';
-import TogglePage from './pages/TogglePage';
 import TimePickerPage from './pages/TimePickerPage';
+import TogglePage from './pages/TogglePage';
+import ToolTipPage from './pages/ToolTipPage';
 import TypographyPage from './pages/TypographyPage';
 
 import './assets/style/index.less';
@@ -18,6 +19,7 @@ storiesOf('General', module)
 .add('Calendar', () => <CalendarPage />)
 .add('Checkbox', () =>  <CheckboxPage />)
 .add('Input', () => <InputPage />)
-.add('Toggle', () => <TogglePage />)
 .add('Time Picker', () => <TimePickerPage />)
+.add('Toggle', () => <TogglePage />)
+.add('ToolTip', () => <ToolTipPage />)
 .add('Typography', () => <TypographyPage />);
