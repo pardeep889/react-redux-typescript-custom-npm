@@ -5,8 +5,10 @@ import './less/tool-tip.less';
 
 interface ToolTipProps extends TooltipPropsWithTitle {
 	type: "high" | "medium" | "low";
+	placement: "top" | "bottom" | "left" | "right";
 }
 
+//! tooltip overwrites wrapped class
 const ToolTipWrapper = (props: ToolTipProps) => {
 	const { type } = props;
 
