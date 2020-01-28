@@ -1,1 +1,72 @@
 @import '../../../assets/style/color.less';
+
+.reset-button {
+  position: relative;
+  background-color: unset;
+  box-shadow: unset;
+}
+
+.text-style {
+  display: flex;
+  align-items: center;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.underline {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 56px;
+  bottom: 4px;
+
+  width: 110px;
+  height: 4px;
+  border-radius: 3px;
+}
+
+.selector {
+  &-icon {
+    padding-right: 8px;
+  }
+
+  &-primary{
+    .reset-button;
+    .text-style;
+    color: @cherry;
+
+    width: 192px;
+    height: 48px;
+
+    &:hover:enabled {
+      .reset-button;
+      color: @pomegranate;
+      &::after {
+        .underline;
+        background-color: @strawberry;
+      }
+    }
+
+    &:active:enabled {
+      .reset-button;
+      color: @pomegranate;
+      &::after {
+        .underline;
+        background-color: @pomegranate;
+      }
+    }
+
+    &:focus:enabled {
+      .reset-button;
+      color: @cherry;
+
+      background-color: @white;
+      border-radius: 40px;
+
+    }
+  }
+}
