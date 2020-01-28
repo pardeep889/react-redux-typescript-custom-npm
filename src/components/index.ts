@@ -6,6 +6,7 @@ export { default as Button } from './Button/Button';
 export { default as Calendar } from './Calendar/Calendar';
 export { default as Checkbox } from './Checkbox/Checkbox';
 export { default as Input } from './Input/Input';
+export { default as Spinner } from './Spinner/Spinner';
 export { default as Text } from './Typography/Text';
 export { default as TimePicker } from './TimePicker/TimePicker';
 export { default as Title } from './Typography/Title';
