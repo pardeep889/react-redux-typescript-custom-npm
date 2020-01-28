@@ -1,20 +1,21 @@
 import React from 'react';
-import Tooltip, { AbstractTooltipProps as AntAbstractTooltipProps } from 'antd/es/tooltip';
+import Tooltip, { TooltipPropsWithTitle } from 'antd/es/tooltip';
 
 import './less/tool-tip.less';
 
-interface ToolTipProps extends AntAbstractTooltipProps {
-
+interface ToolTipProps extends TooltipPropsWithTitle {
+	type: "high" | "medium" | "low";
 }
 
 const ToolTipWrapper = (props: ToolTipProps) => {
+	const { type } = props;
+
+	const toolTipClass = `tool-tip ${type}`
+
 	return (
-		<div>
-			
-		</div>
-		// <Tooltip {...props}>
-		// 	{props.children}
-		// </Tooltip>
+		<Tooltip {...props} overlayClassName={toolTipClass}>
+			{props.children}
+		</Tooltip>
 	)
 }
 
