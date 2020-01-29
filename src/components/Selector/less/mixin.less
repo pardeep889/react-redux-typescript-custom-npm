@@ -8,20 +8,21 @@
   background-color: unset;
   box-shadow: none;
   border-color: unset;
-  transition: unset;
 }
 
 .underline {
   content: "";
   display: block;
   position: absolute;
-  bottom: 25% - 12px;
+  top: 75% + 6px;
   left: @selector-side-padding + @icon-size + 8px;
 
   height: 4px;
   border-radius: 3px;
 
   width: 100% - @selector-side-padding - @icon-size;
+
+  opacity: unset;
 }
 
 .primary-select {
@@ -38,38 +39,4 @@
   align-items: center;
 
   color: @cherry;
-}
-
-.hover {
-  &:hover:enabled{
-    .reset-button;
-    color: @pomegranate;
-    &::after {
-      .underline;
-      background-color: @strawberry;
-    }
-  }
-}
-
-.active {
-  &:active:enabled {
-    .reset-button;
-    color: @pomegranate;
-    &::after {
-      .underline;
-      background-color: @pomegranate;
-    }
-  }
-}
-
-.focus {
-  &:focus:enabled {
-    .reset-button;
-    position: absolute;
-
-    color: @cherry;
-
-    background-color: @white;
-    border-radius: 40px;
-  }
 }
