@@ -13,12 +13,11 @@ const SelectorPage = () => {
         <div className="m20 story-background">
           <div className="m20">
             <h6 className="mb20">Normal</h6>
-            <Selector 
-              type="primary" 
-              icon={<Guest/>}
-            >
-              Choose City    
-            </Selector>
+            <Selector type="primary" icon={<Guest/>} label="city">Choose City</Selector>
+          </div>
+          <div className="m20">
+            <h6 className="mb20">Value Selected</h6>
+            <Selector type="primary" icon={<Guest/>} value="New York City" label="city">Choose City</Selector>
           </div>
         </div>
       </section>

@@ -1,72 +1,76 @@
 @import '../../../assets/style/color.less';
+@import './mixin.less';
 
-.reset-button {
-  position: relative;
-  background-color: unset;
-  box-shadow: unset;
-}
+.selector-label {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
 
-.text-style {
-  display: flex;
-  align-items: center;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
 
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 16px;
-}
+  color: @strawberry;
 
-.underline {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 56px;
-  bottom: 4px;
-
-  width: 110px;
-  height: 4px;
-  border-radius: 3px;
+  padding-left: @selector-side-padding;
 }
 
 .selector {
   &-icon {
-    padding-right: 8px;
+    margin-right: 8px;
+    height: @icon-size;
+    width: @icon-size;
   }
 
-  &-primary{
-    .reset-button;
-    .text-style;
-    color: @cherry;
-
-    width: 192px;
-    height: 48px;
-
-    &:hover:enabled {
+  &-primary {
+    &-value,
+    &-novalue {
       .reset-button;
-      color: @pomegranate;
-      &::after {
-        .underline;
-        background-color: @strawberry;
+      .primary-select;
+
+      //! awaiting QStudio for dimension
+      padding: 0px @selector-side-padding;
+
+      &.ant-btn-primary{
+        &:hover {
+          .reset-button;
+          color: @pomegranate;
+          &::after {
+            .underline;
+            background-color: @strawberry;
+          }
+        }
+
+        &:active {
+          .reset-button;
+          color: @pomegranate;
+          &::after {
+            .underline;
+            background-color: @pomegranate;
+          }
+        }
+
+        &:focus {
+          .reset-button;
+          color: @cherry;
+          background-color: @white;
+        }
       }
     }
 
-    &:active:enabled {
-      .reset-button;
-      color: @pomegranate;
-      &::after {
-        .underline;
-        background-color: @pomegranate;
-      }
+    &-novalue {
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 16px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
     }
 
-    &:focus:enabled {
-      .reset-button;
-      color: @cherry;
-
-      background-color: @white;
-      border-radius: 40px;
-
+    &-value {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: normal;
+      text-transform: capitalize;
     }
   }
 }

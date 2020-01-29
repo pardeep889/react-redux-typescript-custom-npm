@@ -7,21 +7,27 @@ import './less/selector.less';
 interface ButtonProps extends Omit<AntButtonProps, 'type' | 'icon'> {
 	type: "primary" | "secondary";
 	icon: JSX.Element;
+	label: string;
 }
 
 function Selector(props: ButtonProps) {
-	const { value, icon, type } = props;
+	const { value, icon, type, label } = props;
 	const newProps = buttonPropsUpdate(props);
 
-	let buttonText = value ? value : props.children;
+	const valueClass = value ? "-value" : "-novalue";
+	const selectorLabel = value ? <h6 className="selector-label">{label}</h6> : null;
 
-	const selectorClass = `selector-${type}`
+	const selectorClass = `selector-${type}${valueClass}`;
+	const selectorIcon = <div className="selector-icon">{icon}</div>;
 
 	return(
-	<Button {...newProps} className={selectorClass}>
-		<div className="selector-icon">{icon}</div>
-		{buttonText}
-	</Button>
+		<>
+			{selectorLabel}
+			<Button {...newProps} className={selectorClass}>
+				{selectorIcon}
+				{value ? value : props.children}
+			</Button>
+		</>
 	)
 };
 
