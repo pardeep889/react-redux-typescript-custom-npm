@@ -14,32 +14,36 @@ const TypographyPage = () => {
         <h4 className="story-title">Titles</h4>
         <div className="m20">
           <div className="m20">
-            <Title level="h1"> H1 Sample Text </Title>
+            <Title level="h1"> H1 Sample Title </Title>
           </div>
           <div className="m20">
-            <Title level="h2"> H2 Sample Text </Title>
-            <Title level="h2" color="cherry"> H2 Colored Text </Title>
+            <Title level="h2"> H2 Sample Title </Title>
+            <Title level="h2" color="cherry"> H2 Colored Title </Title>
           </div>
           <div className="m20">
-            <Title level="h3"> H3 Sample Text </Title>
+            <Title level="h3"> H3 Sample Title </Title>
           </div>
           <div className="m20">
-            <Title level="h4"> H4 Sample Text </Title>
+            <Title level="h4"> H4 Sample Title </Title>
           </div>
           <div className="m20">
-            <Title level="h6"> H6 Sample Text </Title>
-            <Title level="h6" disabled> H6 Disabled Text </Title>
+            <Title level="h6"> H6 Sample Title </Title>
+            <Title level="h6" disabled> H6 Disabled Title </Title>
           </div>
           <div className="m20">
-            <Title level="h7"> H7 Sample Text </Title>
-            <Title level="h7" color="cherry"> H7 Colored Text </Title>
+            <Title level="h7"> H7 Sample Title </Title>
+            <Title level="h7" color="cherry"> H7 Colored Title </Title>
           </div>
         </div>
       </section>
       <section>
-        <h4 className="story-title">Main Text</h4>
+        <h4 className="story-title">Text</h4>
         <div className="m20">
-          <Text> Main Sample Text </Text>
+          <div className="m20">
+            <Text> Main Sample Text </Text>
+            <Text type="bold"> Bold Sample Text </Text>
+            <Text type="small"> Small Sample Text </Text>
+          </div>
         </div>
       </section>
     </div>

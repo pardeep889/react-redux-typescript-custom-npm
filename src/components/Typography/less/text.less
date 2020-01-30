@@ -1,0 +1,33 @@
+@import '../../../assets/style/color.less';
+
+.text-general {
+  display: flex;
+  align-items: center;
+  color: @pomegranate;
+  letter-spacing: normal;
+}
+
+.text {
+  &-main {
+    .text-general;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+
+  &-bold {
+    .text-general;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+
+    letter-spacing: 0.5px;
+  }
+
+  &-small {
+    .text-general;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+}
