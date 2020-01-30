@@ -2,10 +2,9 @@ import React from 'react';
 
 import './less/typography.less';
 
-interface TitleProps {
-  level: "h1" | "h2" | "h3" | "h4";
+interface TitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
+  level: "h1" | "h2" | "h3" | "h4" | "h6" | "h7";
   disabled?: boolean | undefined;
-  children?: React.ReactNode;
 }
 
 function Title(props: TitleProps) {

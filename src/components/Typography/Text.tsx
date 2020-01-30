@@ -2,7 +2,7 @@ import React from 'react';
 
 import './less/typography.less';
 
-interface TextProps {
+interface TextProps extends React.HTMLAttributes<HTMLHeadingElement> {
   children?: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLElement>;
   className?: string;
