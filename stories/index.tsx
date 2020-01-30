@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 //* Import pages
 import ButtonPage from './pages/ButtonPage';
 import CalendarPage from './pages/CalendarPage';
+import CarouselPage from './pages/CarouselPage'
 import CheckboxPage from './pages/CheckboxPage';
 import InputPage from './pages/InputPage';
 import SpinnerPage from './pages/SpinnerPage';
@@ -19,6 +20,7 @@ import './assets/style/index.less';
 storiesOf('General', module)
 .add('Button', () => <ButtonPage />)
 .add('Calendar', () => <CalendarPage />)
+.add('Carousel', () => <CarouselPage />)
 .add('Checkbox', () =>  <CheckboxPage />)
 .add('Input', () => <InputPage />)
 .add('Spinner', () => <SpinnerPage />)
@@ -27,3 +29,5 @@ storiesOf('General', module)
 .add('Toggle', () => <TogglePage />)
 .add('ToolTip', () => <ToolTipPage />)
 .add('Typography', () => <TypographyPage />);
+
+//change 1
