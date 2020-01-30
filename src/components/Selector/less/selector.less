@@ -1,0 +1,76 @@
+@import '../../../assets/style/color.less';
+@import './mixin.less';
+
+.selector-label {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  color: @strawberry;
+
+  padding-left: @selector-side-padding;
+}
+
+.selector {
+  &-icon {
+    margin-right: 8px;
+    height: @icon-size;
+    width: @icon-size;
+  }
+
+  &-primary {
+    &-value,
+    &-novalue {
+      .reset-button;
+      .primary-select;
+
+      //! awaiting QStudio for dimension
+      padding: 0px @selector-side-padding;
+
+      &.ant-btn-primary{
+        &:hover {
+          .reset-button;
+          color: @pomegranate;
+          &::before {
+            .underline;
+            background-color: @strawberry;
+          }
+        }
+  
+        &:active {
+          .reset-button;
+          color: @pomegranate;
+          &::before {
+            .underline;
+            background-color: @pomegranate;
+          }
+        }
+  
+        &:focus {
+          .reset-button;
+          color: @cherry;
+          background: @white;
+        }
+      }
+    }
+
+    &-novalue {
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 16px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    &-value {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: normal;
+      text-transform: capitalize;
+    }
+  }
+}
