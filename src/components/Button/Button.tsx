@@ -4,7 +4,7 @@ import Button, { ButtonProps as AntButtonProps } from 'antd/es/button';
 import './less/button.less';
 
 //* Custom API Props for Button
-interface ButtonProps extends Omit<AntButtonProps, 'type' | 'size'> {
+interface ButtonProps extends Omit<AntButtonProps, 'type' | 'size' | 'ghost'> {
 	type: "primary" | "secondary" | "text";
 	size?: "full" | "small" | undefined;
 }

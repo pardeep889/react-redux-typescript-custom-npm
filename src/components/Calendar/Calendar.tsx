@@ -189,7 +189,7 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
                 onChange(newValue);
               }}
             >
-              <Arrow type="left"/>
+              <Arrow type="left" tail />
             </div>
           <Text>{this.state.month}</Text>
             <div 
@@ -199,7 +199,7 @@ class CalendarWrapper extends React.Component <CalendarProps, CalendarState>{
                   onChange(newValue)
               }}
             >
-              <Arrow type="right"/>
+              <Arrow type="right" tail/>
             </div>
           </div>
           <div className="calendar-header-weekday">
