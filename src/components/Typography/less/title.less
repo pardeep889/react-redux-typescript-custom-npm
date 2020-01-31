@@ -6,6 +6,14 @@
   letter-spacing: normal;
 }
 
+.title-color {
+  // if any secondary color are being added to the title, for example @cherry for h2 and h7
+  // add another class called &.color-<input color here> and add .title-color mixin to the correct title
+  &.color-cherry {
+    color: @cherry;
+  }
+}
+
 .title {
   &-h1,
   &-h1-disabled {
@@ -30,9 +38,7 @@
     text-transform: capitalize;
     color: @strawberry;
 
-    &.title-color {
-      color: @cherry;
-    }
+    .title-color;
   }
 
   &-h3,
@@ -77,19 +83,17 @@
   &-h7,
   &-h7-disabled {
     .title-general;
-
+    
     font-size: 10px;
     line-height: 16px;
     font-weight: bold;
-
+    
     letter-spacing: 2px;
     
     text-transform: uppercase;
     color: @strawberry;
-
-    &.title-color {
-      color: @cherry;
-    }
+    
+    .title-color;
   }
 
   // &-h1-disabled,
