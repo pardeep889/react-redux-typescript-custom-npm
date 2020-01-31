@@ -7,6 +7,7 @@ export { default as Calendar } from './Calendar/Calendar';
 export { default as Carousel } from './Carousel/Carousel';
 export { default as Checkbox } from './Checkbox/Checkbox';
 export { default as Input } from './Input/Input';
+export { default as PopOverModal } from './PopOverModal/PopOverModal';
 export { default as Spinner } from './Spinner/Spinner';
 export { default as Selector } from './Selector/Selector';
 export { default as Text } from './Typography/Text';
