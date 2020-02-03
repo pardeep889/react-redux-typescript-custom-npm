@@ -6,7 +6,8 @@
   "scripts": {
     "prepare": "npm run build",
     "build": "webpack --mode production",
-    "storybook": "start-storybook -p 8080 --ci"
+    "storybook": "start-storybook -p 8080 --ci",
+    "build-storybook" : "build-storybook"
   },
   "repository": {
     "type": "git",
