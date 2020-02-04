@@ -1,0 +1,41 @@
+@import '../../../assets/style/color.less';
+
+// Ant Variables
+@popover-bg: @white;
+@popover-distance: @popover-arrow-height + 4px;
+
+// Fig8 Variables
+@popover-padding: 40px;
+@popover-arrow-overall-width: 18px;
+@popover-arrow-height: 6px;
+
+.ant-popover {
+  border-radius: 10px;
+
+  &-inner {
+    padding: @popover-padding;
+
+    &-content {
+      padding: 0px;
+    }
+  }
+
+
+  &-placement-bottomRight > &-content > &-arrow{
+    right: @popover-padding;
+    top: 0;
+
+    width: 0;
+    height: 0;
+    border-left: (@popover-arrow-overall-width / 2) solid transparent;
+    border-right: (@popover-arrow-overall-width / 2) solid transparent;
+    border-top-width: @popover-arrow-height;
+    border-top-style: solid;
+    transform: rotateX(180deg);
+
+    box-shadow: unset;
+  }
+}
+
+//fig8 custom colors, nest ant classes under fig8 classes for particular types
+
