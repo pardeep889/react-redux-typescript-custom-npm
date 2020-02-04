@@ -1,0 +1,107 @@
+@import '../../../assets/style/color.less';
+
+.title-general {
+  display: flex;
+  align-items: center;
+  letter-spacing: normal;
+}
+
+.title-color {
+  // if any secondary color are being added to the title, for example @cherry for h2 and h7
+  // add another class called &.color-<input color here> and add .title-color mixin to the correct title
+  &.color-cherry {
+    color: @cherry;
+  }
+}
+
+.title {
+  &-h1,
+  &-h1-disabled {
+    .title-general;
+
+    font-size: 34px;
+    line-height: 32px;
+    font-weight: 500;
+
+    text-transform: capitalize;
+    color: @strawberry;
+  }
+
+  &-h2,
+  &-h2-disabled {
+    .title-general;
+
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 500;
+
+    text-transform: capitalize;
+    color: @strawberry;
+
+    .title-color;
+  }
+
+  &-h3,
+  &-h3-disabled {
+    .title-general;
+
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+
+    color: @pomegranate;
+  }
+
+  &-h4,
+  &-h4-disabled {
+    .title-general;
+
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+    
+    text-transform: uppercase;
+    color: @pomegranate;
+  }
+  
+  &-h6,
+  &-h6-disabled {
+    .title-general;
+
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+    
+    text-transform: uppercase;
+    color: @strawberry;
+  }
+
+  &-h7,
+  &-h7-disabled {
+    .title-general;
+    
+    font-size: 10px;
+    line-height: 16px;
+    font-weight: bold;
+    
+    letter-spacing: 2px;
+    
+    text-transform: uppercase;
+    color: @strawberry;
+    
+    .title-color;
+  }
+
+  // &-h1-disabled,
+  // &-h2-disabled,
+  // &-h3-disabled,
+  // &-h4-disabled,
+  // &-h7-disabled 
+  &-h6-disabled {
+    color: @malt;
+  }
+}

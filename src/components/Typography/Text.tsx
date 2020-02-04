@@ -1,21 +1,20 @@
 import React from 'react';
 
-import './less/typography.less';
+import './less/text.less';
 
-interface TextProps {
-  children?: React.ReactNode;
-  onClick?: React.MouseEventHandler<HTMLElement>;
-  className?: string;
+interface TextProps extends React.HTMLAttributes<HTMLHeadingElement> {
+  type?: "main" | "bold" | "small";
 }
 
 function Text(props: TextProps) {
-  const { className } = props;
-  let propsClass = "";
+  const { className, type } = props;
 
-  className ? propsClass = className : "";
+  const textType = type ? type : "main";
+
+  const textClass = `text-${textType}`;
 
   return (
-    <p {...props} className={`text ${className}`} >{props.children}</p>
+    <p {...props} className={`${textClass} ${className}`} >{props.children}</p>
   )
 
 };
