@@ -15,8 +15,6 @@ import TogglePage from './pages/TogglePage';
 import ToolTipPage from './pages/ToolTipPage';
 import TypographyPage from './pages/TypographyPage';
 
-// import TemplateCompPage from './pages/TemplateCompPage';
-
 import './assets/style/index.less';
 
 //* Add stories
@@ -33,7 +31,5 @@ storiesOf('General', module)
 .add('Toggle', () => <TogglePage />)
 .add('ToolTip', () => <ToolTipPage />)
 .add('Typography', () => <TypographyPage />)
-
-// .add('TemplateComp', () => <TemplateCompPage />);
 
 //change 1

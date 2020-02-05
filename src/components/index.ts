@@ -15,6 +15,3 @@ export { default as TimePicker } from './TimePicker/TimePicker';
 export { default as Title } from './Typography/Title';
 export { default as Toggle } from './Toggle/Toggle';
 export { default as ToolTip } from './ToolTip/ToolTip';
-
-// export { default as TemplateComp } from './TemplateComp/TemplateComp';
-
