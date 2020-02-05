@@ -1,18 +1,30 @@
   
-import React from 'react';
-import Button, { ButtonProps as AntButtonProps } from 'antd/es/button';
+import React, { useState, ReactNode } from 'react';
+import Select, { SelectProps as AntSelectProps } from 'antd/es/select';
+const { Option } = Select;
 
-import './less/dropdown.less';
+// import './less/dropdown.less';
 
 //* Custom API Props for Button
-interface DropDownProps {
-
+interface DropDownProps extends AntSelectProps {
 }
 
 function DropDown(props: DropDownProps) {
+  const { size } = props;
+
+  const dropDownClass = `dropdown-${size ? size : "large"}`
 
 	return(
-		<div></div>
+    <Select 
+      className={dropDownClass}
+      dropdownMatchSelectWidth={false} 
+      placeholder="select value"
+    >
+      <Option value="value1">Value 1</Option>
+      <Option value="value2">Value 2</Option>
+      <Option value="value3">Value 3</Option>
+      <Option value="value4">Value 4</Option>
+    </Select>
 	)
 };
 

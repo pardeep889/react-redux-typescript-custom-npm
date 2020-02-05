@@ -7,6 +7,10 @@ import React from 'react';
 //COMPONENT
 import { DropDown } from '@components/index';
 
+const dropDownSample = {
+  
+}
+
 const DropDownPage = () => {
   return (
     <div>
@@ -14,7 +18,7 @@ const DropDownPage = () => {
       <section>
         <h4 className="story-title">Types</h4>
         <div className="m20">
-          {/* <DropDown /> */}
+          <DropDown />
         </div>
       </section>
     </div>

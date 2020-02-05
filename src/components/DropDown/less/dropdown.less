@@ -1,1 +1,104 @@
-@import '../../../assets/style/color.less';
+//IMPORT INPUT MIXIN
+@import '../../../assets/style/mixin/input.less';
+
+//** LARGE DROPDOWN
+.dropdown-large {
+  & .ant-select-selection {
+    //! ^^ keep space between & .ant-select-selection, needed for styling to work. 
+
+    //* INPUT MIXIN FROM ASSETS/STYLE
+    .input-default-mixin;
+    .input-text-mixin;
+  
+    display: flex;
+    justify-content: space-between;
+  
+    &:hover {
+      .input-hover-mixin;
+    }
+  
+    &:active,
+    &:focus {
+      .input-reset-mixin;
+      .input-active-mixin;
+    }
+  
+    &__rendered {
+      //* THIS CLASS EFFECTS THE SELECTED IN INPUT FIELD
+      width: 100%;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+  
+      margin: 0px;
+    }
+
+    &__placeholder {
+      color: @input-placeholder-color;
+    }
+  }
+}
+
+
+//* ARROW
+.ant-select-arrow {
+  //TODO: size of default arrow. only as placeholder for now
+  width: 14px;
+  height: 14px;
+
+  // unset antd margin on arrow
+  margin: unset;
+
+  //position of arrow matches padding
+  top: @input-padding-vertical-base;
+  right: @input-padding-horizontal-base;
+}
+
+
+//* DROPDOWN
+.ant-select-dropdown {
+  border: 1px solid @malt;
+  border-radius: 20px;;
+
+  padding: @input-padding-vertical-base;
+  box-shadow: unset;
+
+  width: @input-width;
+  height: auto;
+
+  &-menu {
+    &-vertical {
+      padding: unset;
+    }
+
+    &-item {
+      padding: 0px 0px 12px 0px;
+
+      &:last-child {
+        padding-bottom: unset;
+      }
+      
+      .input-text-mixin;
+      color: @input-color;
+  
+      &:hover,
+      &:hover:not(.ant-select-dropdown-menu-item-disabled){
+        .input-reset-mixin;
+        color: @strawberry;
+        text-shadow: @box-shadow-size @hover-shadow
+      }
+  
+      &-selected {
+        .input-reset-mixin;
+        color: @cherry;
+      }
+  
+      &-active,
+      &-active:not(.ant-select-dropdown-menu-item-disabled) {
+        .input-reset-mixin;
+        color: @cherry;
+      }
+    }  
+  }
+}

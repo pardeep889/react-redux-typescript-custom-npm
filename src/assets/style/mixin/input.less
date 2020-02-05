@@ -1,0 +1,66 @@
+@import '../color.less';
+@import '../variables.less';
+@import './typography.less';
+
+//* Ant Variables
+@input-height-base : 48px;
+@input-padding-horizontal-base: 16px;
+@input-padding-vertical-base : 16px;
+@input-placeholder-color : @malt;
+@input-color : @pomegranate;
+@input-border-color : @malt;
+@input-bg : @white;
+@input-hover-border-color : @strawberry;
+@input-disabled-bg : @white;
+
+//* FIG8 VARIABLES
+@input-width : 320px;
+
+//* RESET
+.input-reset-mixin() {
+  box-shadow: unset;
+  background-color: unset;
+  background: unset;
+}
+
+//* TEXT
+.input-text-mixin() {
+  .text-main-mixin;
+}
+
+//* NORMAL
+.input-default-mixin() {
+  border-radius: 34px;
+
+  width: @input-width;
+  height: @input-height-base;
+
+  padding: @input-padding-horizontal-base;
+
+  border: 1px solid @input-border-color;
+  background-color: @input-bg;
+
+  color: @input-color;
+}
+
+//* HOVER STATE
+.input-hover-mixin() {
+  border-color: @input-hover-border-color;
+  box-shadow: @box-shadow-size @hover-shadow;
+}
+
+//* ACTIVE STATE
+.input-active-mixin() {
+  border-color: @strawberry;
+  box-shadow: unset;
+}
+
+//* ERROR STATE
+.input-error-mixin() {
+  color: @cherry;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+}
