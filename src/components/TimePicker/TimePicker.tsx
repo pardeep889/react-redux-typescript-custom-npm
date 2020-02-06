@@ -6,6 +6,8 @@ import './less/time-picker.less';
 import './TimeSlot';
 import TimeSlot from './TimeSlot';
 
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+
 //! timeslots to be radios? see antd radio buttons
 
 interface TimeProps extends AntRadioProps {
@@ -66,9 +68,11 @@ class TimePickerWrapper extends React.Component <TimeProps & React.HTMLProps<HTM
 
     return (
       <Radio.Group className="time-picker-container" {...radioButtons}>
-        <div className="time-picker">
+        <OverlayScrollbarsComponent className="time-picker">
+        <div className="innerDiv">
           {this.renderTimeSlot()}
         </div>
+        </OverlayScrollbarsComponent>
         <div className="time-picker-blur" />
       </Radio.Group>
     )
