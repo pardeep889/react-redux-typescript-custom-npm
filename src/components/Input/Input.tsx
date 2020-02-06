@@ -1,39 +1,85 @@
 import React from 'react';
 import Input, { InputProps as AntInputProps } from 'antd/es/input';
-import { Title } from '../index'
+
+import { Title, DropDown } from '@components/index'
 
 import './less/input.less';
 
 //* Custom API Props for Input
-interface AntProps extends Omit<AntInputProps, 'type' > {
-	type?: "text";
-	title: string;
+
+interface ValueProps {
+	icon?: JSX.Element,
+	prefixValue?: string | number,
+	value: string | number
+}
+interface InputProps extends Omit<AntInputProps, 'type' > {
+	type?: "text" | "dropdown";
+	dropDownOptions?: {
+		defaultValue: string | number;
+		optionList: ValueProps[];
+	}
 	error?: string;
+	title: string;
 }
 
-function InputWrapper(props: AntProps) {
-	const { type, title, disabled, error } = props;
+function InputWrapper(props: InputProps) {
+	const { type, title, disabled, error, dropDownOptions } = props;
+	const InputGroup = Input.Group;
 	
-	let inputDisabled = false;
-	let errorText = null;
-	let errorClass = "";
-
-	disabled ? inputDisabled = disabled : inputDisabled = false;
-	error ? errorClass = "error" : ""
-
-	if (error){
-		errorText = <p className="error" >{error}</p>
-	}
-
-	const inputClass = `input ${type} ${errorClass}`
+	let inputDisabled = disabled ? true : false;
 	
-	return(
+	// ERRORS
+	let errorText = error ? <p className="error-message" >{error}</p> : null;
+	let errorClass = error ? "-error" : "";
+
+	// CLASSNAME
+	const inputClass = `input-${type ? type : "text"} ${errorClass}`;
+
+	// UPDATE PROPS
+	const newProps = inputPropsUpdate(props);
+
+	// INPUT FIELD (DEFAULT)
+	let inputField = <Input {...newProps} className={inputClass} />;
+
+
+	// IF (DROPDOWN)
+	if(type === "dropdown" && dropDownOptions){
+		const { defaultValue, optionList } = dropDownOptions;
+
+		inputField = (
+			<InputGroup className={inputClass} >
+				<div className="input-dropdown-group">
+					<DropDown type="partial" optionList={optionList} defaultValue={defaultValue}/>
+					<Input {...newProps}/>
+				</div>
+			</InputGroup>
+		)
+	};
+
+
+	return (
 		<div>
-			<Title level="h4" disabled={inputDisabled} >{ title }</Title>
-			<Input {...props} className={inputClass} />
+			<Title level="h7" disabled={inputDisabled} >{ title }</Title>
+			{ inputField }
 			{ errorText }
 		</div>
 	)
+	
 };
+
+const inputPropsUpdate = (props: InputProps) => {
+  const { dropDownOptions, title, error, type } = props;
+	let newProps = Object.assign({}, props);
+	
+	dropDownOptions ? delete newProps.dropDownOptions : null;
+	title ? delete newProps.title : null;
+	error ? delete newProps.error : null;
+	
+	if(type === "dropdown"){
+		newProps.type = "text";
+	}
+
+  return newProps;
+}
 
 export default InputWrapper;
