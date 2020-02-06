@@ -2,7 +2,7 @@
 @import '../../../assets/style/mixin/input.less';
 
 //** LARGE DROPDOWN
-.dropdown-large {
+.dropdown-full-large {
   & .ant-select-selection {
     //! ^^ keep space between & .ant-select-selection, needed for styling to work. 
 
@@ -40,6 +40,61 @@
   }
 }
 
+.dropdown-partial {
+  //TODO : AWAITING QUBSTUDIO DIMENSIONS EVERYTHING FOR PARTIAL TYPE IS PLACEHOLDER ONLY
+  & .ant-select-selection {
+    //! ^^ keep space between & .ant-select-selection, needed for styling to work. 
+
+    //* INPUT MIXIN FROM ASSETS/STYLE
+    .input-text-mixin;
+    width: 100px;
+    height: @input-height-base;
+
+    border: unset;
+  
+    display: flex;
+    justify-content: space-between;
+  
+    &:hover {
+      .input-reset-mixin;
+      // .input-hover-mixin;
+    }
+  
+    &:active,
+    &:focus {
+      // .input-reset-mixin;
+      .input-active-mixin;
+    }
+  
+    &__rendered {
+      //* THIS CLASS EFFECTS THE SELECTED IN INPUT FIELD
+      width: 100%;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+  
+      margin: 0px;
+    }
+
+    &__placeholder {
+      color: @input-placeholder-color;
+    }
+  }
+
+  & .partial-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & .label-icon {
+      padding-right: 8px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
 
 //* ARROW
 .ant-select-arrow {
@@ -57,6 +112,7 @@
 
 
 //* DROPDOWN
+//TODO : NEED TO ADD DIFFERENT SIZES TO DROPDOWN, AWAITING QUBSTUDIO DESIGN
 .ant-select-dropdown {
   border: 1px solid @malt;
   border-radius: 20px;;
