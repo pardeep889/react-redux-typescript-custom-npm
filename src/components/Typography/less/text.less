@@ -1,33 +1,25 @@
 @import '../../../assets/style/color.less';
+@import '../../../assets/style/mixin/typography.less';
 
 .text-general {
   display: flex;
   align-items: center;
   color: @pomegranate;
-  letter-spacing: normal;
 }
 
 .text {
   &-main {
     .text-general;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 24px;
+    .text-main-mixin;
   }
 
   &-bold {
     .text-general;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 22px;
-
-    letter-spacing: 0.5px;
+    .text-bold-mixin;
   }
 
   &-small {
     .text-general;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 16px;
+    .text-small-mixin;
   }
 }

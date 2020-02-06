@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface ArrowProps {
-  type: "right" | "left";
+  type: "right" | "left" | "up" | "down";
   tail?: Boolean 
 }
 
@@ -9,9 +9,9 @@ const Arrow = (props: ArrowProps) => {
   const { type,tail } = props;
   const DEGREES = {
     'left': 0,
-    'down': 90,
+    'up': 90,
     'right': 180,
-    'up': 270
+    'down': 270
   }
   const Arrow = (
     <svg transform={`rotate(${DEGREES[type]})`} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

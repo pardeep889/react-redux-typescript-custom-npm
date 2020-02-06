@@ -6,6 +6,7 @@ import ButtonPage from './pages/ButtonPage';
 import CalendarPage from './pages/CalendarPage';
 import CarouselPage from './pages/CarouselPage'
 import CheckboxPage from './pages/CheckboxPage';
+import DropDownPage from './pages/DropDownPage';
 import InputPage from './pages/InputPage';
 import PopOverPage from './pages/PopOverPage';
 import SpinnerPage from './pages/SpinnerPage';
@@ -23,6 +24,7 @@ storiesOf('General', module)
 .add('Calendar', () => <CalendarPage />)
 .add('Carousel', () => <CarouselPage />)
 .add('Checkbox', () =>  <CheckboxPage />)
+.add('DropDown', () =>  <DropDownPage />)
 .add('Input', () => <InputPage />)
 .add('PopOver', () => <PopOverPage />)
 .add('Spinner', () => <SpinnerPage />)
