@@ -1,0 +1,26 @@
+.scroll-mixin(){
+  &>.os-content{
+    height: auto; //! Maybe too generalized, used to retain padding bottom in TimePicker
+  }
+    &>.os-scrollbar{
+    z-index: 50;
+    padding:0;
+    border-radius: 2px;
+  }
+  &>.os-scrollbar-vertical{
+    @top-bottom-margin:16px;
+    @top-adjust:0px;
+
+    @top-scroll: @top-adjust + @top-bottom-margin;
+
+    background: @malt;
+    right: 4px;
+    width: 4px;
+    top: @top-scroll !important;
+    height: calc(100% - @top-scroll - @top-bottom-margin);
+    &> .os-scrollbar-track > .os-scrollbar-handle {
+      max-height: 30%;
+      background: @cherry;
+    }
+  }
+}
