@@ -1,34 +1,30 @@
 @import '../../../assets/style/mixin/input.less';
 
-//* Reset Styling
-.ant-input{
-  &:focus {
-    .input-reset-mixin;
-  }
-}
-
-//* ERROR STYLING
-.input-error(){
-  &.-error {
-    border-color: @cherry;
-  }
-}
-
+//* ERROR TEXT STYLING
 .error-message {
   .input-error-mixin;
+  width: @input-width;
 }
 
-//* INPUT GENERAL STYLING
 .input {
-  &-text {
+  //* INPUT GENERAL STYLING
+  &-text,
+  &-text-disabled,
+  &-dropdown,
+  &-dropdown-disabled  {
     .input-default-mixin;
     .input-text-mixin;
-    .input-error;
+    &.-error {
+      border-color: @cherry;
+    }
   
     margin-top: 4px;
     margin-bottom: 4px;
-  
-    &:hover:enabled {
+  }
+
+  //* INPUT TEXT STATES
+  &-text {
+    &:hover {
       .input-hover-mixin;
     }
   
@@ -37,40 +33,38 @@
     }
   }
 
-}
+  //* INPUT DROPDOWN ADDITIONAL STYLING
+  &-dropdown,
+  &-dropdown-disabled {
+    padding-top: unset;
+    padding-bottom: unset;
+    padding-left: unset;
 
+    & .input-dropdown-group {
+      display: flex;
+    }
 
-//* INPUT DROPDOWN STYLING
-.input-dropdown.ant-input-group {
-  .input-default-mixin;
-  .input-error;
-
-  padding-top: unset;
-  padding-bottom: unset;
-  padding-left: unset;
-
-  margin-top: 4px;
-  margin-bottom: 4px;
-
-  &:hover {
-    .input-hover-mixin;
+    & .ant-input {
+      .input-text-mixin;
+      border: unset;
+    }
   }
 
-  &:focus-within {
-    .input-active-mixin;
-  }
-  
-  & .input-dropdown-group {
-    display: flex;
-  }
+  //* INPUT DROPDOWN STATES
+ &-dropdown {
+    &:hover {
+      .input-hover-mixin;
+    }
 
-  & .ant-input {
-    .input-text-mixin;
-    border: unset;
+    &:focus-within {
+      .input-active-mixin;
+    }
 
-    &:hover:enabled,
-    &:focus {
-      .input-reset-mixin;
+    & .ant-input {
+      &:hover:enabled,
+      &:focus {
+        .input-reset-mixin;
+      }
     }
   }
 }

@@ -21,6 +21,8 @@ const dropDownOptions = {
   ]
 }
 
+const errorMessage = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+
 const InputPage = () => {
   return (
     <div>
@@ -34,7 +36,7 @@ const InputPage = () => {
           <Input type="text" title="Email" disabled placeholder="Disabled" />
         </div>
         <div className="m20">
-          <Input type="text" title="Email" error="Invalid email address" placeholder="Error" />
+          <Input type="text" title="Email" error={errorMessage} placeholder="Error" />
         </div>
       </section>
       <section className="m20">
@@ -43,7 +45,10 @@ const InputPage = () => {
           <Input type="dropdown" title="Number" placeholder="000-0000" dropDownOptions={dropDownOptions}/>
         </div>
         <div className="m20">
-          <Input type="dropdown" title="Number" placeholder="000-0000" dropDownOptions={dropDownOptions} error="Invalid number"/>
+          <Input type="dropdown" title="Number" placeholder="000-0000" dropDownOptions={dropDownOptions} disabled/>
+        </div>
+        <div className="m20">
+          <Input type="dropdown" title="Number" placeholder="000-0000" dropDownOptions={dropDownOptions} error={errorMessage}/>
         </div>
       </section>
     </div>

@@ -6,7 +6,6 @@ import { Title, DropDown } from '@components/index'
 import './less/input.less';
 
 //* Custom API Props for Input
-
 interface ValueProps {
 	icon?: JSX.Element,
 	prefixValue?: string | number,
@@ -26,14 +25,13 @@ function InputWrapper(props: InputProps) {
 	const { type, title, disabled, error, dropDownOptions } = props;
 	const InputGroup = Input.Group;
 	
-	let inputDisabled = disabled ? true : false;
-	
 	// ERRORS
 	let errorText = error ? <p className="error-message" >{error}</p> : null;
 	let errorClass = error ? "-error" : "";
+	let disabledClass = disabled ? "-disabled" : ""
 
 	// CLASSNAME
-	const inputClass = `input-${type ? type : "text"} ${errorClass}`;
+	const inputClass = `input-${type ? type : "text"}${disabledClass} ${errorClass}`;
 
 	// UPDATE PROPS
 	const newProps = inputPropsUpdate(props);
@@ -49,17 +47,16 @@ function InputWrapper(props: InputProps) {
 		inputField = (
 			<InputGroup className={inputClass} >
 				<div className="input-dropdown-group">
-					<DropDown type="partial" optionList={optionList} defaultValue={defaultValue}/>
+					<DropDown type="partial" optionList={optionList} defaultValue={defaultValue} disabled={disabled}/>
 					<Input {...newProps}/>
 				</div>
 			</InputGroup>
 		)
 	};
 
-
 	return (
 		<div>
-			<Title level="h7" disabled={inputDisabled} >{ title }</Title>
+			<Title level="h7" disabled={disabled} >{ title }</Title>
 			{ inputField }
 			{ errorText }
 		</div>
@@ -67,6 +64,7 @@ function InputWrapper(props: InputProps) {
 	
 };
 
+//* Remove unecessary props for antd
 const inputPropsUpdate = (props: InputProps) => {
   const { dropDownOptions, title, error, type } = props;
 	let newProps = Object.assign({}, props);
