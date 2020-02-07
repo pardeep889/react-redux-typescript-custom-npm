@@ -40,6 +40,7 @@
   }
 }
 
+//** PARTIAL DROPDOWN
 .dropdown-partial {
   //TODO : AWAITING QUBSTUDIO DIMENSIONS EVERYTHING FOR PARTIAL TYPE IS PLACEHOLDER ONLY
   & .ant-select-selection {
@@ -51,18 +52,18 @@
     height: @input-height-base;
 
     border: unset;
+    background-color: unset;
   
     display: flex;
     justify-content: space-between;
   
     &:hover {
       .input-reset-mixin;
-      // .input-hover-mixin;
     }
   
     &:active,
     &:focus {
-      // .input-reset-mixin;
+      .input-reset-mixin;
       .input-active-mixin;
     }
   
@@ -87,6 +88,8 @@
     justify-content: space-between;
     align-items: center;
 
+    padding-left: @input-padding-horizontal-base;
+
     & .label-icon {
       padding-right: 8px;
       display: flex;
@@ -96,7 +99,7 @@
 }
 
 
-//* ARROW
+//** ARROW
 .ant-select-arrow {
   //TODO: size of default arrow. only as placeholder for now
   width: 14px;
@@ -111,7 +114,7 @@
 }
 
 
-//* DROPDOWN
+//** DROPDOWN MENU
 //TODO : NEED TO ADD DIFFERENT SIZES TO DROPDOWN, AWAITING QUBSTUDIO DESIGN
 .ant-select-dropdown {
   border: 1px solid @malt;

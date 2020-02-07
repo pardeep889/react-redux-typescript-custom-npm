@@ -33,6 +33,7 @@ const TypographyPage = () => {
           <div className="m20">
             <Title level="h7"> H7 Sample Title </Title>
             <Title level="h7" color="cherry"> H7 Colored Title </Title>
+            <Title level="h7" disabled> H7 Disabled Title </Title>
           </div>
         </div>
       </section>

@@ -1,12 +1,14 @@
 @import '../../../assets/style/color.less';
 
-.title-general {
+.title-general() {
   display: flex;
   align-items: center;
   letter-spacing: normal;
+
+  .title-color;
 }
 
-.title-color {
+.title-color() {
   // if any secondary color are being added to the title, for example @cherry for h2 and h7
   // add another class called &.color-<input color here> and add .title-color mixin to the correct title
   &.color-cherry {
@@ -37,8 +39,6 @@
 
     text-transform: capitalize;
     color: @strawberry;
-
-    .title-color;
   }
 
   &-h3,
@@ -91,17 +91,15 @@
     letter-spacing: 2px;
     
     text-transform: uppercase;
-    color: @strawberry;
-    
-    .title-color;
+    color: @strawberry; 
   }
 
-  // &-h1-disabled,
-  // &-h2-disabled,
-  // &-h3-disabled,
-  // &-h4-disabled,
-  // &-h7-disabled 
-  &-h6-disabled {
+  &-h1-disabled,
+  &-h2-disabled,
+  &-h3-disabled,
+  &-h4-disabled,
+  &-h6-disabled, 
+  &-h7-disabled {
     color: @malt;
   }
 }
