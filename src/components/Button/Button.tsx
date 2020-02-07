@@ -11,33 +11,18 @@ interface ButtonProps extends Omit<AntButtonProps, 'type' | 'size' | 'ghost'> {
 
 function ButtonWrapper(props: ButtonProps) {
 	const { type, size } = props;
-	let buttonClassType: string;
-	let buttonSize: string;
 
 	const buttonProps = buttonPropsUpdate(props);
-
-	// classNames
-	type ? buttonClassType = type : buttonClassType = "primary";
-
-	// only secondary have buttonSize, primary and text buttons do not need it
-	switch(type){
-		case "secondary":
-			size ? buttonSize = size : buttonSize = "full";
-			break;
-		default:
-			buttonSize = "";
-			break;
-	}
+	const sizeClass = size ? `-${size}` : "-full";
 	
-	let buttonClass = `btn ${buttonClassType} ${buttonSize}`;
+	const buttonClass = `btn-${type}${sizeClass}`;
 
-	//! add typography to button once it is made
 	return(
-		<Button {...buttonProps} className={buttonClass} >{props.children}</Button>
+		<Button {...buttonProps} className={buttonClass}>{props.children}</Button>
 	)
 };
 
-// * function to update button props to match Ant Design
+// * update button props to match Ant Design
 const buttonPropsUpdate = (props: ButtonProps) => {
 	const { type } = props
 	let buttonType: "ghost" | "link" | "default" | "primary" | "dashed" | "danger" | undefined;
