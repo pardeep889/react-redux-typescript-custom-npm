@@ -10,14 +10,28 @@ const ButtonPage = () => {
   return (
     <div>
       <h3 className="story-title">Button Types</h3>
-      <section>
+      <section className="m20">
         <h4 className="story-title">Primary</h4>
-        <div className="m20">
-          <Button type ="primary" onClick={action('Primary Button Clicked')}>Primary</Button>
-        </div>
-        <div className="m20">
-          <Button type ="primary" disabled onClick={action('Disabled Button Clicked')}>Disabled</Button>
-        </div>
+        <aside className="story-flex">
+          <div>
+            <h4>Full</h4>
+            <div className="m20">
+              <Button type ="primary">Primary</Button>
+            </div>
+            <div className="m20">
+              <Button type ="primary" disabled>Disabled</Button>
+            </div>
+          </div>
+          <div>
+          <h4>Small</h4>
+            <div className="m20">
+              <Button type ="primary" size="small">small</Button>
+            </div>
+            <div className="m20">
+              <Button type ="primary" size="small" disabled>small</Button>
+            </div>
+          </div>
+        </aside>
       </section>
 
       <section>

@@ -1,54 +1,73 @@
 @import '../../../assets/style/color.less';
+@import '../../../assets/style/mixin/typography.less';
 
 // Common Variables
-@btn-primary-shadow: 0px 4px;
+@btn-primary-boxshadow: 0px 4px;
 @btn-secondary-border: 2px solid;
 
-.btn {
+//* BUTTON TEXT
+.button-text() {
+  .button-text-mixin;
 
-  // Typical styling
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 16px;
-  letter-spacing: 1.5px;
+  text-align: center;
+  text-transform: uppercase;
+}
 
+//* GENERAL STYLING
+.button-default-mixin() {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  text-transform: uppercase;
+  border: unset;
+}
 
-  border: none;
-  
-  &.primary {
-    // BACKGROUND
-    width: 320px;
-    height: 52px;
-    
-    border-radius: 27px;
-    background: @cherry;
-    
-    box-shadow: @btn-primary-shadow @pomegranate;
-    
-    &:hover:enabled {
-      background: @pomegranate;
-      box-shadow: @btn-primary-shadow @pomegranate-shadow;
+.btn {
+  //** PRIMARY BUTTON
+  &-primary {
+    &-full,
+    &-small {
+      //* PRIMARY GENERAL STYLING
+      .button-text;
+      .button-default-mixin;
+
+      width: auto;
+      height: 52px;
+      padding: 0px 40px;
+
+      border-radius: 27px;
+
+      background-color: @cherry;
+      box-shadow: @btn-primary-boxshadow @pomegranate;
+
+      color: @white;
+
+      &:hover:enabled {
+        background-color: @pomegranate;
+        box-shadow: @btn-primary-boxshadow @pomegranate-shadow;
+        border: unset;
+      }
+      
+      &:focus:enabled,
+      &:active:enabled {
+        background-color: @pomegranate-shadow;
+        box-shadow: @btn-primary-boxshadow @pomegranate-shadow;
+        border: unset;
+      }
+      
+      &:disabled,
+      &:hover:disabled {
+        background-color: @malt;
+        box-shadow: @btn-primary-boxshadow @malt-shadow;
+        color: @white;
+      }
     }
-    
-    &:active:enabled {
-      background: @pomegranate-shadow;
-      box-shadow: @btn-primary-shadow @pomegranate-shadow;
+
+    &-full {
+      width: 320px;
     }
-    
-    &:disabled {
-      background: @malt;
-      box-shadow: @btn-primary-shadow @malt-shadow;
-    }
-  
-    // TEXT
-    color: @white;
   }
 
+  //** SECONDARY BUTTON
   &.secondary {
 
     // Typical styling
@@ -61,10 +80,12 @@
     color: @cherry;
 
     &.full {
+      width: auto;
       height: 48px;
     }
 
     &.small {
+      width: auto;
       height: 32px;
     }
 
@@ -87,6 +108,7 @@
     }
   }
 
+  //** TEXT BUTTON
   &.text {
     // Typical styling
     border: none;
