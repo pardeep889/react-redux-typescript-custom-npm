@@ -42,19 +42,21 @@
       color: @white;
 
       &:hover:enabled {
-        background: @pomegranate;
+        background-color: @pomegranate;
         box-shadow: @btn-primary-boxshadow @pomegranate-shadow;
+        border: unset;
       }
       
       &:focus:enabled,
       &:active:enabled {
-        background: @pomegranate-shadow;
+        background-color: @pomegranate-shadow;
         box-shadow: @btn-primary-boxshadow @pomegranate-shadow;
+        border: unset;
       }
       
       &:disabled,
       &:hover:disabled {
-        background: @malt;
+        background-color: @malt;
         box-shadow: @btn-primary-boxshadow @malt-shadow;
         color: @white;
       }
