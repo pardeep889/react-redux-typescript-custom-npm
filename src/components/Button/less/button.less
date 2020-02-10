@@ -21,6 +21,14 @@
   border: unset;
 }
 
+//* BUTTON ICON 
+.button-icon {
+  width: 24px;
+  height: 24px;
+
+  margin-right: 6px;
+}
+
 .btn {
   //** PRIMARY BUTTON
   &-primary {
@@ -75,15 +83,15 @@
       .button-text;
       .button-default-mixin;
 
+      width: auto;
+
       padding: 0px 32px;
   
       border: @btn-secondary-border @cherry;
       border-radius: 34px;
   
       color: @cherry;
-  
-      width: auto;
-
+      
       &:hover:enabled {
         color: @white;
         background-color: @cherry;

@@ -4,21 +4,26 @@ import Button, { ButtonProps as AntButtonProps } from 'antd/es/button';
 import './less/button.less';
 
 //* Custom API Props for Button
-interface ButtonProps extends Omit<AntButtonProps, 'type' | 'size' | 'ghost'> {
+interface ButtonProps extends Omit<AntButtonProps, 'type' | 'size' | 'ghost' | 'icon'> {
 	type: "primary" | "secondary" | "text";
 	size?: "full" | "small" | undefined;
+	icon?: JSX.Element;
 }
 
 function ButtonWrapper(props: ButtonProps) {
-	const { type, size } = props;
+	const { type, size, icon } = props;
 
 	const buttonProps = buttonPropsUpdate(props);
 	const sizeClass = size ? `-${size}` : "-full";
 	
 	const buttonClass = `btn-${type}${sizeClass}`;
+	const buttonIcon = icon && (type !== "primary") ? <div className="button-icon">{icon}</div> : null;
 
 	return(
-		<Button {...buttonProps} className={buttonClass}>{props.children}</Button>
+		<Button {...buttonProps} className={buttonClass}>
+			{buttonIcon}
+			{props.children}
+		</Button>
 	)
 };
 
@@ -26,7 +31,6 @@ function ButtonWrapper(props: ButtonProps) {
 const buttonPropsUpdate = (props: ButtonProps) => {
 	const { type } = props
 	let buttonType: "ghost" | "link" | "default" | "primary" | "dashed" | "danger" | undefined;
-	const buttonSize = undefined;
 
 	switch(type){
 		case "secondary":
@@ -41,8 +45,9 @@ const buttonPropsUpdate = (props: ButtonProps) => {
 
 	const newProps = {
 		...props,
-		size: buttonSize,
 		type: buttonType,
+		size: undefined,
+		icon: undefined
 	}
 
 	return newProps;
