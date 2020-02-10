@@ -8,26 +8,42 @@ interface ButtonProps extends Omit<AntButtonProps, 'type' | 'icon'> {
 	type: "primary" | "secondary";
 	icon: JSX.Element;
 	label: string;
+	underline?: boolean;
+	valueSelected?: boolean;
+	popUp?: boolean;
 }
 
 function Selector(props: ButtonProps) {
-	const { value, icon, type, label } = props;
+	const { icon, type, label, underline, valueSelected, popUp } = props;
 	const newProps = buttonPropsUpdate(props);
 
-	const valueClass = value ? "-value" : "-novalue";
-	const selectorLabel = value ? <h6 className="selector-label">{label}</h6> : null;
+	const valueClass = valueSelected ? "-value" : "-novalue";
+	const popUpClass = popUp ? "-popup" : "";
+	const selectorUnderline = underline ? <div className="selector-underline"></div> : null;
 
-	const selectorClass = `selector-${type}${valueClass}`;
+	let selectorClass = type === "primary" ? `selector-${type}${valueClass}${popUpClass}` : `selector-${type}`;
+
 	const selectorIcon = <div className="selector-icon">{icon}</div>;
+	const selectorLabel = valueSelected ? <h6 className="selector-label">{label}</h6> : null;
 
-	return(
-		<>
-			{selectorLabel}
+	if(type === "primary"){
+		return (
+			<div>
+			{popUp ? null : selectorLabel}
 			<Button {...newProps} className={selectorClass}>
 				{selectorIcon}
-				{value ? value : props.children}
+				{props.children}
+				{selectorUnderline}
 			</Button>
-		</>
+		</div>
+		)
+	}
+
+	return(
+			<Button {...newProps} className={selectorClass}>
+				{selectorIcon}
+				{props.children}
+			</Button>
 	)
 };
 
