@@ -68,43 +68,49 @@
   }
 
   //** SECONDARY BUTTON
-  &.secondary {
+  &-secondary {
+    &-full,
+    &-small {
+      //* SECONDARY GENERAL STYLING
+      .button-text;
+      .button-default-mixin;
 
-    // Typical styling
-    padding-left: 32px;
-    padding-right: 32px;
-
-    border: @btn-secondary-border @cherry;
-    border-radius: 34px;
-
-    color: @cherry;
-
-    &.full {
+      padding: 0px 32px;
+  
+      border: @btn-secondary-border @cherry;
+      border-radius: 34px;
+  
+      color: @cherry;
+  
       width: auto;
+
+      &:hover:enabled {
+        color: @white;
+        background-color: @cherry;
+        border-color: @cherry;
+      }
+  
+      &:active:enabled,
+      &:focus:enabled {
+        color: @white;
+        border: @btn-secondary-border @pomegranate;
+        background-color: @pomegranate;
+      }
+      
+      &:disabled,
+      &:disabled:hover {
+        color: @malt;
+        border: @btn-secondary-border @malt;
+        background-color: unset;
+      }
+    }
+
+    &-full {
       height: 48px;
     }
 
-    &.small {
-      width: auto;
+    &-small {
       height: 32px;
-    }
-
-    &:hover:enabled {
-      color: @white;
-      background-color: @cherry;
-    }
-
-    &:active:enabled {
-      //! background & color currently blue for testing, change color when Qstudio updates
-      color: blue;
-      border: @btn-secondary-border blue;
-      background-color: @white;
-    }
-    
-    &:disabled {
-      color: @malt;
-      border: @btn-secondary-border @malt;
-      // background-color: @btn-secondary-bg-disabled;
     }
   }
 
@@ -116,6 +122,8 @@
 
     color: @cherry;
     font-weight: bold;
+
+    width: auto;
 
     span {
       padding-bottom: 2px;
