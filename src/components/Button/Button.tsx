@@ -5,7 +5,7 @@ import './less/button.less';
 
 //* Custom API Props for Button
 interface ButtonProps extends Omit<AntButtonProps, 'type' | 'size' | 'ghost' | 'icon'> {
-	type: "primary" | "secondary" | "text";
+	type: "primary" | "secondary" | "text" | "icon";
 	size?: "full" | "small" | undefined;
 	icon?: JSX.Element;
 }
@@ -36,7 +36,7 @@ const buttonPropsUpdate = (props: ButtonProps) => {
 		case "secondary":
 			buttonType = "default";
 			break;
-		case "text": 
+		case "text" || "icon": 
 			buttonType = "link";
 			break;
 		default:

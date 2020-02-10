@@ -19,6 +19,8 @@
   justify-content: center;
   align-items: center;
   border: unset;
+  background: unset;
+  box-shadow: unset;
 }
 
 //* BUTTON ICON 
@@ -91,7 +93,7 @@
       border-radius: 34px;
   
       color: @cherry;
-      
+
       &:hover:enabled {
         color: @white;
         background-color: @cherry;
@@ -123,34 +125,49 @@
   }
 
   //** TEXT BUTTON
-  &.text {
-    // Typical styling
-    border: none;
-    text-align: right;
-
-    color: @cherry;
-    font-weight: bold;
+  &-text-full {
+    .button-text;
+    .button-default-mixin;
 
     width: auto;
+    height: auto;
+    // height: 32px;
 
-    span {
-      padding-bottom: 2px;
-      border-bottom-width: 2px;
-      border-bottom-style: solid;
-    }
+    padding: 8px;
+
+    color: @cherry;
 
     &:hover:enabled {
       color: @pomegranate;
     }
 
-    &:active:enabled {
-      //! color currently blue for testing, change color when Qstudio updates
-      color: blue;
+    &:active:enabled,
+    &:focus:enabled {
+      color: @pomegranate-shadow;
     }
 
-    &:disabled {
+    &:disabled,
+    &:disabled:hover {
       color: @malt;
     }
+  }
 
+  //** ONLY ICON
+  &-icon-full {
+    .button-default-mixin;
+
+    padding: 0px 4px;
+
+    &:hover:enabled,
+    &:focus:enabled,
+    &:active:enabled,
+    &:disabled:hover,
+    &:disabled {
+      .button-default-mixin;
+    }
+
+    & .button-icon {
+      margin: unset;
+    }
   }
 }
