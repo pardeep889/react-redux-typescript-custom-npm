@@ -18,14 +18,12 @@
   align-items: center;
 }
 
-.selector-label {
-  .title-h6-mixin;
+.selector-title {
   text-transform: uppercase;
   color: @strawberry;
 
   padding-left: @selector-side-padding;
 }
-
 
 .selector-secondary-default() {
   border: unset;
@@ -42,12 +40,22 @@
 
   //* PRIMARY SELECTOR
   &-primary {
+
+    &-container {
+      position: relative;
+      height: 60px;
+      width: auto;
+    }
+
     &-value,
     &-novalue,
     &-value-popup,
     &-novalue-popup {
       .reset-button;
       .selector-default-style;
+
+      position: absolute;
+      bottom: 0px;
 
       height: 48px;
       width: auto;

@@ -2,68 +2,80 @@ import React from 'react';
 import Button, { ButtonProps as AntButtonProps } from 'antd/es/button';
 
 import './less/selector.less';
+import { Title } from '@components/index';
 
 //* Custom API Props for Button
-interface ButtonProps extends Omit<AntButtonProps, 'type' | 'icon'> {
+interface SelectorProps extends Omit<AntButtonProps, 'type' | 'icon'> {
 	type: "primary" | "secondary";
 	icon: JSX.Element;
-	label: string;
-	underline?: boolean;
-	valueSelected?: boolean;
-	popUp?: boolean;
+	selectedValue?: string;
+
+	title?: string;
+	promptText?: string;
+	popup?: boolean;
+	underline? : boolean
 }
 
-function Selector(props: ButtonProps) {
-	const { icon, type, label, underline, valueSelected, popUp } = props;
-	const newProps = buttonPropsUpdate(props);
+function Selector(props: SelectorProps) {
+	const { icon, type, title, underline, selectedValue, promptText, popup } = props;
+	const newProps = selectorPropsUpdate(props);
 
-	const valueClass = valueSelected ? "-value" : "-novalue";
-	const popUpClass = popUp ? "-popup" : "";
-	const selectorUnderline = underline ? <div className="selector-underline"></div> : null;
-
-	let selectorClass = type === "primary" ? `selector-${type}${valueClass}${popUpClass}` : `selector-${type}`;
-
+	// CLASSES
+	const valueClass = selectedValue ? "-value" : "-novalue";
+	const popupClass = popup ? "-popup" : "";
+	const selectorClass = type === "primary" ? `selector-${type}${valueClass}${popupClass}` : `selector-${type}`;
+	
+	// ELEMENTS
 	const selectorIcon = <div className="selector-icon">{icon}</div>;
-	const selectorLabel = valueSelected ? <h6 className="selector-label">{label}</h6> : null;
+	const selectorUnderline = underline ? <div className="selector-underline"></div> : null;
+	const selectorLabel = selectedValue ? <Title className="selector-title" level="h6">{title}</Title> : null;
+	const selectorText = selectedValue ? selectedValue : promptText;
 
 	if(type === "primary"){
 		return (
-			<div>
-			{popUp ? null : selectorLabel}
-			<Button {...newProps} className={selectorClass}>
-				{selectorIcon}
-				{props.children}
-				{selectorUnderline}
-			</Button>
-		</div>
+			<div className="selector-primary-container">
+				{popup ? null : selectorLabel}
+				<Button {...newProps} className={selectorClass}>
+					{selectorIcon}
+					{popup ? promptText : selectorText}
+					{popup ? null : selectorUnderline}
+				</Button>
+			</div>
 		)
 	}
 
 	return(
 			<Button {...newProps} className={selectorClass}>
 				{selectorIcon}
-				{props.children}
+				{selectedValue}
 			</Button>
 	)
 };
 
-const buttonPropsUpdate = (props: ButtonProps) => {
-	const { type } = props
-	let buttonType: "ghost" | "link" | "default" | "primary" | "dashed" | "danger" | undefined;
+const selectorPropsUpdate = (props: SelectorProps) => {
+	// remove unecessary props for antd button;
+	const { type, selectedValue, underline, popup, title, promptText } = props
+	let selectorType: "ghost" | "link" | "default" | "primary" | "dashed" | "danger" | undefined;
 
 	switch(type){
 		case "secondary":
-			buttonType = "default";
+			selectorType = "default";
 			break;
 		default:
-			buttonType = "primary";
+			selectorType = "primary";
 	}
 
 	const newProps = {
 		...props,
-		type: buttonType,
+		type: selectorType,
 		icon: undefined,
 	}
+
+	selectedValue ? delete newProps.selectedValue : null;
+	popup ? delete newProps.popup : null;
+	underline ? delete newProps.underline : null;
+	title ? delete newProps.title : null;
+	promptText ? delete newProps.promptText : null;
 
 	return newProps;
 }
