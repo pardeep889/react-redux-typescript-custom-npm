@@ -1,76 +1,163 @@
 @import '../../../assets/style/color.less';
-@import './mixin.less';
+@import '../../../assets/style/mixin/typography.less';
 
-.selector-label {
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 16px;
+// Common Variables
+@icon-size: 24px;
+@selector-side-padding: 16px;
+@icon-margin: 8px;
 
-  letter-spacing: 2px;
+.reset-button() {
+  background-color: unset;
+  box-shadow: none;
+  border-color: unset;
+}
+
+.selector-default-style() {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.selector-title {
   text-transform: uppercase;
-
   color: @strawberry;
 
   padding-left: @selector-side-padding;
 }
 
+.selector-secondary-default() {
+  border: unset;
+  color: @cherry;
+}
+
+// SELECTOR STYLING
 .selector {
   &-icon {
-    margin-right: 8px;
+    margin-right: @icon-margin;
     height: @icon-size;
     width: @icon-size;
   }
 
+  //* PRIMARY SELECTOR
   &-primary {
-    &-value,
-    &-novalue {
-      .reset-button;
-      .primary-select;
 
-      //! awaiting QStudio for dimension
+    &-container {
+      position: relative;
+      height: 60px;
+      width: auto;
+    }
+
+    &-value,
+    &-novalue,
+    &-value-popup,
+    &-novalue-popup {
+      .reset-button;
+      .selector-default-style;
+
+      position: absolute;
+      bottom: 0px;
+
+      height: 48px;
+      width: auto;
       padding: 0px @selector-side-padding;
 
-      &.ant-btn-primary{
-        &:hover {
-          .reset-button;
-          color: @pomegranate;
-          &::before {
-            .underline;
-            background-color: @strawberry;
-          }
-        }
-  
-        &:active {
-          .reset-button;
-          color: @pomegranate;
-          &::before {
-            .underline;
-            background-color: @pomegranate;
-          }
-        }
-  
-        &:focus {
-          .reset-button;
-          color: @cherry;
-          background: @white;
+      border-radius: 40px;
+      border: unset;
+    
+      color: @cherry;
+
+      .selector-underline {
+        display: block;
+        position: absolute;
+        top: calc(50% + 12px);
+        left: calc(@selector-side-padding + @icon-size + @icon-margin);
+      
+        width: calc(100% - (@selector-side-padding * 2) - @icon-size - @icon-margin);
+        height: 4px;
+        border-radius: 3px;
+    
+        background-color: @strawberry;
+      }
+
+      //* STATES
+      &:hover {
+        .reset-button;
+        color: @pomegranate;
+      }
+
+      &:active,
+      &:focus {
+        .reset-button;
+        color: @pomegranate;
+        .selector-underline {
+          background-color: @pomegranate;
         }
       }
     }
 
-    &-novalue {
-      font-weight: bold;
-      font-size: 14px;
-      line-height: 16px;
-      letter-spacing: 1.5px;
+    //* TEXT SIZE
+    &-novalue,
+    &-value-popup,
+    &-novalue-popup {
+      .button-text-mixin;
       text-transform: uppercase;
     }
 
     &-value {
-      font-weight: 500;
-      font-size: 18px;
-      line-height: 24px;
-      letter-spacing: normal;
+      .title-h3-mixin;
       text-transform: capitalize;
+    }
+
+    //* WHITE BACKGROUND
+    &-value-popup,
+    &-novalue-popup {
+      background-color: @white;
+      //* STATES
+      &:hover {
+        background-color: @white;
+      }
+
+      &:active,
+      &:focus {
+        background-color: @white;
+      }
+    }
+  }
+
+  //* SECONDARY SELECTOR
+  &-secondary {
+    .reset-button;
+    .text-main-mixin;
+    .selector-default-style;
+    .selector-secondary-default;
+
+    width: 180px;
+    height: 40px;
+
+    border-radius: 56px;
+    background-color: #FDF6F7;
+
+    text-transform: capitalize;
+
+    &:hover,
+    &:active {
+      .selector-default-style;
+      .selector-secondary-default;
+      background-color: @malt;
+    }
+
+    &:focus {
+      .selector-default-style;
+      .selector-secondary-default;
+      background-color: #FDF6F7;
+    }
+
+    &:disabled,
+    &:disabled:hover {
+      .selector-default-style;
+      .selector-secondary-default;
+      background-color: rgba(246, 218, 223, 0.3);
+      color: @malt;
     }
   }
 }
